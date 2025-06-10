@@ -19,3 +19,8 @@ installed and authenticated for your project.
 ```
 ./deploy_cloud_run.sh
 ```
+
+A GitHub Actions workflow is included to automatically build the Docker image
+and deploy it to Google Cloud Run whenever changes are pushed to the `main`
+branch. The workflow requires the `GCP_PROJECT_ID`, `GCP_REGION`,
+`GCP_SERVICE_NAME`, and `GCP_SA_KEY` secrets to be configured in your repository.
