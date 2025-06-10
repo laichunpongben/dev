@@ -61,6 +61,7 @@ function App() {
         gridTemplateColumns="repeat(auto-fit, minmax(110px, 1fr))"
         gap={2}
         mt={4}
+        pb={4}
         sx={{ maxWidth: 600, mx: 'auto' }}
       >
         {items.map((item, idx) => (
