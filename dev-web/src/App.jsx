@@ -155,6 +155,24 @@ function App() {
           )
         ))}
       </Box>
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        gap={2}
+        mb={2}
+      >
+        <IconButton
+          component="a"
+          href="https://github.com/laichunpongben"
+          target="_blank"
+          rel="noopener noreferrer"
+          size="small"
+          sx={{ color: 'inherit', borderRadius: '50%' }}
+        >
+          <Icons.GitHub fontSize="small" />
+        </IconButton>
+      </Box>
       <Typography component="footer" variant="body2">
         © 2025 Databookman by Ben Lai
       </Typography>
