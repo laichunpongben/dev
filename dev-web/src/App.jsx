@@ -156,7 +156,7 @@ function App() {
         ))}
       </Box>
       <Typography component="footer" variant="body2">
-        © Databookman 2025
+        © 2025 Databookman by Ben Lai
       </Typography>
     </Box>
   )
