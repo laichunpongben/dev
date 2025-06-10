@@ -78,5 +78,15 @@
     "name": "Diplomacy",
     "url": "https://diplomacy.databookman.com",
     "icon": "Handshake"
+  },
+  {
+    "name": "Air",
+    "url": "https://air.databookman.com",
+    "icon": "Flight"
+  },
+  {
+    "name": "Builder",
+    "url": "https://builder.databookman.com",
+    "icon": "Build"
   }
 ]
