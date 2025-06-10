@@ -22,5 +22,5 @@ installed and authenticated for your project.
 
 A GitHub Actions workflow is included to automatically build the Docker image
 and deploy it to Google Cloud Run whenever changes are pushed to the `main`
-branch. The workflow requires the `GCP_PROJECT_ID`, `GCP_REGION`,
-`GCP_SERVICE_NAME`, and `GCP_SA_KEY` secrets to be configured in your repository.
+branch. The workflow requires the `GCP_PROJECT_ID`, `GCP_REGISTRY_REGION`,
+`GCP_RUN_REGION`, `GCP_SERVICE_NAME`, and `GCP_SA_KEY` secrets to be configured in your repository.
