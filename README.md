@@ -12,15 +12,25 @@ npm run dev
 
 The site reads a list of available subdomain links from `public/subdomains.json` and displays them as a simple portal.
 
-To build a Docker image and deploy the app to Google Cloud Run, use the
-`deploy_cloud_run.sh` script in the repository root. Ensure the gcloud CLI is
-installed and authenticated for your project.
+To build a Docker image and deploy the app to Google Cloud Run manually, run the
+following commands with the gcloud CLI installed and authenticated:
 
+```bash
+docker build -t REGION-docker.pkg.dev/PROJECT_ID/REGISTRY_REPO/dev-web:latest ./dev-web
+docker push REGION-docker.pkg.dev/PROJECT_ID/REGISTRY_REPO/dev-web:latest
+gcloud run deploy dev-web \
+  --image REGION-docker.pkg.dev/PROJECT_ID/REGISTRY_REPO/dev-web:latest \
+  --region REGION \
+  --platform managed \
+  --allow-unauthenticated
 ```
-./deploy_cloud_run.sh
-```
+Replace `REGION`, `PROJECT_ID`, and `REGISTRY_REPO` with your values.
 
 A GitHub Actions workflow is included to automatically build the Docker image
 and deploy it to Google Cloud Run whenever changes are pushed to the `main`
-branch. The workflow requires the `GCP_PROJECT_ID`, `GCP_REGISTRY_REGION`,
-`GCP_RUN_REGION`, `GCP_SERVICE_NAME`, and `GCP_SA_KEY` secrets to be configured in your repository.
+branch. The workflow breaks the process into separate steps that build the
+container image, push it to Artifact Registry, and deploy the revision to Cloud
+Run. It requires the `GCP_PROJECT_ID`, `GCP_REGISTRY_REGION`, `GCP_RUN_REGION`,
+`GCP_REGISTRY_REPO`, `GCP_SERVICE_NAME`, and `GCP_SA_KEY` secrets to be configured in your repository.
+It authenticates Docker with Artifact Registry using these credentials before
+pushing the image, so no extra registry secret is needed.
