@@ -93,5 +93,10 @@
     "name": "Cybersecurity",
     "url": "https://cybersecurity.databookman.com",
     "icon": "Security"
+  },
+  {
+    "name": "Antarctica",
+    "url": "https://antarctica.databookman.com",
+    "icon": "AcUnit"
   }
 ]
