@@ -51,3 +51,14 @@ footer {
   margin: 0;
 }
 
+.signature {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: "Agustina Regular";
+  font-weight: bold;
+  font-variant-ligatures: no-common-ligatures;
+  -webkit-font-variant-ligatures: no-common-ligatures;
+  padding: 0 10px;
+}
+
