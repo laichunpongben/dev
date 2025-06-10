@@ -51,12 +51,18 @@ function App() {
                 aspectRatio: '1 / 1',
                 border: '1px solid #ccc',
                 borderRadius: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 0.5,
               }}
               onClick={() =>
                 window.open(item.url, '_blank', 'noopener,noreferrer')
               }
             >
               <PublicIcon />
+              <span style={{ fontSize: '0.75rem' }}>{item.name}</span>
             </IconButton>
           )
         ))}
