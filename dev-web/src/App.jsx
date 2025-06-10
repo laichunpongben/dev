@@ -185,9 +185,31 @@ function App() {
         gap={2}
         mb={2}
       >
-        <Typography component="span" className="signature-bracket">&lt;</Typography>
+        <Typography
+          component="span"
+          sx={{
+            fontFamily: 'Agustina, "Agustina Regular", sans-serif',
+            fontWeight: 'bold',
+            fontVariantLigatures: 'no-common-ligatures',
+            WebkitFontVariantLigatures: 'no-common-ligatures',
+            fontSize: '1.5rem',
+          }}
+        >
+          &lt;
+        </Typography>
         <ShinyText text="Ben Lai" speed={3} className="signature" />
-        <Typography component="span" className="signature-bracket">/&gt;</Typography>
+        <Typography
+          component="span"
+          sx={{
+            fontFamily: 'Agustina, "Agustina Regular", sans-serif',
+            fontWeight: 'bold',
+            fontVariantLigatures: 'no-common-ligatures',
+            WebkitFontVariantLigatures: 'no-common-ligatures',
+            fontSize: '1.5rem',
+          }}
+        >
+          /&gt;
+        </Typography>
         <IconButton
           component="a"
           href="https://github.com/laichunpongben"
