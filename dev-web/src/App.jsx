@@ -234,7 +234,7 @@ function App() {
         open={alertOpen}
         onClose={() => setAlertOpen(false)}
         autoHideDuration={2000}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <Alert severity="error" sx={{ width: '100%' }}>
           Failed to open link
