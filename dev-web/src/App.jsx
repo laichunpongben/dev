@@ -80,7 +80,8 @@ function App() {
           ) : (
             <PixelTransition
               key={item.url}
-              style={{ width: '100%', height: '100%' }}
+              style={{ width: '100%' }}
+              aspectRatio="100%"
               gridSize={12}
               pixelColor="#fff"
               animationStepDuration={0.4}
