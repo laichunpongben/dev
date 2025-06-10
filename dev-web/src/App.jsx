@@ -16,9 +16,9 @@ function App() {
       const res = await fetch(url, { method: 'HEAD' })
       if (res.ok) {
         window.open(url, '_blank', 'noopener,noreferrer')
-      } else if (res.status === 404) {
-        // quietly fail if the target does not exist
-        console.warn(`Link ${url} returned 404`)
+      } else if (res.status === 404 || res.status === 0) {
+        // quietly fail if the target does not exist or is unreachable
+        console.warn(`Link ${url} returned ${res.status}`)
       } else {
         window.open(url, '_blank', 'noopener,noreferrer')
       }
