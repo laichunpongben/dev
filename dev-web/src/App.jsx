@@ -22,7 +22,7 @@ function App() {
 
   return (
     <Box textAlign="center" p={2}>
-      <h1>Databookman Portal</h1>
+      <h1>Dev Portal</h1>
       <Box
         display="grid"
         gridTemplateColumns="repeat(5, 1fr)"
