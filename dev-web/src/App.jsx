@@ -11,6 +11,23 @@ import './App.css'
 function App() {
   const [links, setLinks] = useState([])
 
+  const checkAndOpen = async (url) => {
+    try {
+      const res = await fetch(url, { method: 'HEAD' })
+      if (res.ok) {
+        window.open(url, '_blank', 'noopener,noreferrer')
+      } else if (res.status === 404) {
+        // quietly fail if the target does not exist
+        console.warn(`Link ${url} returned 404`)
+      } else {
+        window.open(url, '_blank', 'noopener,noreferrer')
+      }
+    } catch {
+      // if the check fails (e.g. CORS), open the link as before
+      window.open(url, '_blank', 'noopener,noreferrer')
+    }
+  }
+
   const handleAnimationComplete = () => {
     console.log('All letters have animated!')
   }
@@ -97,9 +114,7 @@ function App() {
                     borderRadius: 0,
                     p: 0,
                   }}
-                  onClick={() =>
-                    window.open(item.url, '_blank', 'noopener,noreferrer')
-                  }
+                  onClick={() => checkAndOpen(item.url)}
                 >
                   <Box
                     display="flex"
@@ -129,9 +144,7 @@ function App() {
                     borderRadius: 0,
                     p: 0,
                   }}
-                  onClick={() =>
-                    window.open(item.url, '_blank', 'noopener,noreferrer')
-                  }
+                  onClick={() => checkAndOpen(item.url)}
                 >
                   <Box
                     display="flex"
