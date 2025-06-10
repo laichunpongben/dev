@@ -90,7 +90,7 @@ function App() {
                 width: '100%',
                 aspectRatio: '1 / 1',
                 border: '1px solid #ccc',
-                borderRadius: 0,
+                borderRadius: '15px',
               }}
             >
               <MoreHorizIcon />
