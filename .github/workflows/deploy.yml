@@ -10,18 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read       # to fetch repo
-      id-token: write      # to mint OIDC token
+      contents: read
+      id-token: write
 
     env:
-      # Non-sensitive settings stored as GitHub Variables (vars)
       GCP_PROJECT_ID:      ${{ vars.GCP_PROJECT_ID }}
       GCP_REGISTRY_REGION: ${{ vars.GCP_REGISTRY_REGION }}
       GCP_REGISTRY_REPO:   ${{ vars.GCP_REGISTRY_REPO }}
       GCP_SERVICE_NAME:    ${{ vars.GCP_SERVICE_NAME }}
       GCP_RUN_REGION:      ${{ vars.GCP_RUN_REGION }}
-
-      # Dynamic tag from current commit SHA
       IMAGE_TAG:           ${{ github.sha }}
 
     steps:
@@ -37,8 +34,7 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
         with:
-          project_id:                   ${{ env.GCP_PROJECT_ID }}
-          export_default_credentials:   true
+          project_id: ${{ env.GCP_PROJECT_ID }}
 
       - name: Configure Docker for Artifact Registry
         run: |
