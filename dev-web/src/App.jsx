@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Box, IconButton, Typography } from '@mui/material'
+import { Box, IconButton, Typography, Tooltip } from '@mui/material'
 import ShinyText from './components/ShinyText'
 import PixelTransition from './components/PixelTransition'
 import SplitText from './components/SplitText'
@@ -11,18 +11,21 @@ import './App.css'
 
 function App() {
   const [links, setLinks] = useState([])
+  const [failedIndex, setFailedIndex] = useState(null)
 
-  const checkAndOpen = async (url) => {
+  const checkAndOpen = async (url, index) => {
     try {
       const res = await fetch(url, { method: 'HEAD' })
       if (res.ok) {
         window.open(url, '_blank', 'noopener,noreferrer')
+        setFailedIndex(null)
       } else {
-        // quietly fail for any non-OK response
+        setFailedIndex(index)
         console.warn(`Link ${url} returned ${res.status}`)
       }
     } catch {
       // if the check fails (e.g. CORS), do not open the link
+      setFailedIndex(index)
       console.warn(`Failed to fetch ${url}`)
     }
   }
@@ -30,6 +33,14 @@ function App() {
   const handleAnimationComplete = () => {
     console.log('All letters have animated!')
   }
+
+  useEffect(() => {
+    if (failedIndex !== null) {
+      const timer = setTimeout(() => setFailedIndex(null), 3000)
+      return () => clearTimeout(timer)
+    }
+    return undefined
+  }, [failedIndex])
 
   useEffect(() => {
     fetch('/subdomains.json')
@@ -105,64 +116,76 @@ function App() {
               pixelColor="#fff"
               animationStepDuration={0.4}
               firstContent={
-                <IconButton
-                  sx={{
-                    width: '100%',
-                    aspectRatio: '1 / 1',
-                    border: '1px solid #ccc',
-                    borderRadius: 0,
-                    p: 0,
-                  }}
-                  onClick={() => checkAndOpen(item.url)}
+                <Tooltip
+                  title="Failed to open link"
+                  arrow
+                  open={failedIndex === idx}
                 >
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    gap={1}
-                    sx={{ width: '100%', height: '100%' }}
+                  <IconButton
+                    sx={{
+                      width: '100%',
+                      aspectRatio: '1 / 1',
+                      border: '1px solid #ccc',
+                      borderRadius: 0,
+                      p: 0,
+                    }}
+                    onClick={() => checkAndOpen(item.url, idx)}
                   >
-                    {item.Icon ? (
-                      <item.Icon fontSize="large" />
-                    ) : (
-                      <PublicIcon fontSize="large" />
-                    )}
-                    <Typography variant="caption" mt={0.5}>
-                      {item.name}
-                    </Typography>
-                  </Box>
-                </IconButton>
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                      gap={1}
+                      sx={{ width: '100%', height: '100%' }}
+                    >
+                      {item.Icon ? (
+                        <item.Icon fontSize="large" />
+                      ) : (
+                        <PublicIcon fontSize="large" />
+                      )}
+                      <Typography variant="caption" mt={0.5}>
+                        {item.name}
+                      </Typography>
+                    </Box>
+                  </IconButton>
+                </Tooltip>
               }
               secondContent={
-                <IconButton
-                  sx={{
-                    width: '100%',
-                    aspectRatio: '1 / 1',
-                    border: '1px solid #ccc',
-                    borderRadius: 0,
-                    p: 0,
-                  }}
-                  onClick={() => checkAndOpen(item.url)}
+                <Tooltip
+                  title="Failed to open link"
+                  arrow
+                  open={failedIndex === idx}
                 >
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    gap={1}
-                    sx={{ width: '100%', height: '100%' }}
+                  <IconButton
+                    sx={{
+                      width: '100%',
+                      aspectRatio: '1 / 1',
+                      border: '1px solid #ccc',
+                      borderRadius: 0,
+                      p: 0,
+                    }}
+                    onClick={() => checkAndOpen(item.url, idx)}
                   >
-                    {item.Icon ? (
-                      <item.Icon fontSize="large" />
-                    ) : (
-                      <PublicIcon fontSize="large" />
-                    )}
-                    <Typography variant="caption" mt={0.5}>
-                      {item.name}
-                    </Typography>
-                  </Box>
-                </IconButton>
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                      gap={1}
+                      sx={{ width: '100%', height: '100%' }}
+                    >
+                      {item.Icon ? (
+                        <item.Icon fontSize="large" />
+                      ) : (
+                        <PublicIcon fontSize="large" />
+                      )}
+                      <Typography variant="caption" mt={0.5}>
+                        {item.name}
+                      </Typography>
+                    </Box>
+                  </IconButton>
+                </Tooltip>
               }
             />
           )
