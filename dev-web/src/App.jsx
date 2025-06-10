@@ -27,9 +27,10 @@ function App() {
       .catch((err) => console.error('Failed to load subdomains', err))
   }, [])
 
-  const totalSlots = 20
   const items = [...links]
-  while (items.length < totalSlots) {
+  const remainder = links.length % 4
+  const placeholders = remainder === 0 ? 0 : 4 - remainder
+  for (let i = 0; i < placeholders; i += 1) {
     items.push({ placeholder: true })
   }
 
@@ -58,7 +59,7 @@ function App() {
       />
       <Box
         display="grid"
-        gridTemplateColumns="repeat(auto-fit, minmax(110px, 1fr))"
+        gridTemplateColumns="repeat(4, minmax(110px, 1fr))"
         gap={2}
         mt={4}
         pb={4}
