@@ -174,7 +174,16 @@ function App() {
         gap={2}
         mb={2}
       >
-        <Typography id="signature" className="signature" sx={{ mr: 1 }}>
+        <Typography
+          id="signature"
+          className="signature"
+          sx={{
+            mr: 1,
+            fontFamily: '"Agustina", "Agustina Regular", sans-serif',
+            fontWeight: 'bold',
+            fontVariantLigatures: 'none',
+          }}
+        >
           Ben Lai
         </Typography>
         <IconButton
