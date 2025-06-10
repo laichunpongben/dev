@@ -16,15 +16,13 @@ function App() {
       const res = await fetch(url, { method: 'HEAD' })
       if (res.ok) {
         window.open(url, '_blank', 'noopener,noreferrer')
-      } else if (res.status === 404 || res.status === 0) {
-        // quietly fail if the target does not exist or is unreachable
-        console.warn(`Link ${url} returned ${res.status}`)
       } else {
-        window.open(url, '_blank', 'noopener,noreferrer')
+        // quietly fail for any non-OK response
+        console.warn(`Link ${url} returned ${res.status}`)
       }
     } catch {
-      // if the check fails (e.g. CORS), open the link as before
-      window.open(url, '_blank', 'noopener,noreferrer')
+      // if the check fails (e.g. CORS), do not open the link
+      console.warn(`Failed to fetch ${url}`)
     }
   }
 
