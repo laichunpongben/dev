@@ -52,38 +52,77 @@ function App() {
               <MoreHorizIcon />
             </IconButton>
           ) : (
-            <PixelTransition key={item.url} style={{ width: '100%', height: '100%' }}>
-              <IconButton
-                sx={{
-                  width: '100%',
-                  aspectRatio: '1 / 1',
-                  border: '1px solid #ccc',
-                  borderRadius: 0,
-                  p: 0,
-                }}
-                onClick={() =>
-                  window.open(item.url, '_blank', 'noopener,noreferrer')
-                }
-              >
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  alignItems="center"
-                  justifyContent="center"
-                  gap={1}
-                  sx={{ width: '100%', height: '100%' }}
+            <PixelTransition
+              key={item.url}
+              style={{ width: '100%', height: '100%' }}
+              gridSize={12}
+              pixelColor="#fff"
+              animationStepDuration={0.4}
+              firstContent={
+                <IconButton
+                  sx={{
+                    width: '100%',
+                    aspectRatio: '1 / 1',
+                    border: '1px solid #ccc',
+                    borderRadius: 0,
+                    p: 0,
+                  }}
+                  onClick={() =>
+                    window.open(item.url, '_blank', 'noopener,noreferrer')
+                  }
                 >
-                  {item.Icon ? (
-                    <item.Icon fontSize="large" />
-                  ) : (
-                    <PublicIcon fontSize="large" />
-                  )}
-                  <Typography variant="caption" mt={0.5}>
-                    {item.name}
-                  </Typography>
-                </Box>
-              </IconButton>
-            </PixelTransition>
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                    gap={1}
+                    sx={{ width: '100%', height: '100%' }}
+                  >
+                    {item.Icon ? (
+                      <item.Icon fontSize="large" />
+                    ) : (
+                      <PublicIcon fontSize="large" />
+                    )}
+                    <Typography variant="caption" mt={0.5}>
+                      {item.name}
+                    </Typography>
+                  </Box>
+                </IconButton>
+              }
+              secondContent={
+                <IconButton
+                  sx={{
+                    width: '100%',
+                    aspectRatio: '1 / 1',
+                    border: '1px solid #ccc',
+                    borderRadius: 0,
+                    p: 0,
+                  }}
+                  onClick={() =>
+                    window.open(item.url, '_blank', 'noopener,noreferrer')
+                  }
+                >
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                    gap={1}
+                    sx={{ width: '100%', height: '100%' }}
+                  >
+                    {item.Icon ? (
+                      <item.Icon fontSize="large" />
+                    ) : (
+                      <PublicIcon fontSize="large" />
+                    )}
+                    <Typography variant="caption" mt={0.5}>
+                      {item.name}
+                    </Typography>
+                  </Box>
+                </IconButton>
+              }
+            />
           )
         ))}
       </Box>
