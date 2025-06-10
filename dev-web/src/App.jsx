@@ -39,8 +39,8 @@ function App() {
       p={2}
       display="flex"
       flexDirection="column"
-      justifyContent="center"
-      flex={1}
+      alignItems="center"
+      minHeight="100vh"
     >
       <SplitText
         text="Dev Portal"
@@ -61,7 +61,7 @@ function App() {
         gridTemplateColumns="repeat(auto-fit, minmax(110px, 1fr))"
         gap={2}
         mt={4}
-        sx={{ maxWidth: 600, mx: 'auto' }}
+        sx={{ maxWidth: 600, mx: 'auto', flexGrow: 1 }}
       >
         {items.map((item, idx) => (
           item.placeholder ? (
@@ -152,6 +152,9 @@ function App() {
           )
         ))}
       </Box>
+      <Typography component="footer" variant="body2">
+        © Databookman 2025
+      </Typography>
     </Box>
   )
 }
