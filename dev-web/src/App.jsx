@@ -40,7 +40,7 @@ function App() {
       display="flex"
       flexDirection="column"
       justifyContent="center"
-      minHeight="100vh"
+      flex={1}
     >
       <SplitText
         text="Dev Portal"
@@ -60,6 +60,7 @@ function App() {
         display="grid"
         gridTemplateColumns="repeat(auto-fit, minmax(110px, 1fr))"
         gap={2}
+        mt={4}
         sx={{ maxWidth: 600, mx: 'auto' }}
       >
         {items.map((item, idx) => (

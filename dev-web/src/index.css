@@ -24,8 +24,8 @@ body {
   flex-direction: column;
   align-items: center;
   min-width: 320px;
-  min-height: 100vh;
-  padding-bottom: 2rem;
+  height: 100vh;
+  padding-bottom: 0;
 }
 
 h1 {
