@@ -8,5 +8,65 @@
     "name": "Quant",
     "url": "https://quant.databookman.com",
     "icon": "Functions"
+  },
+  {
+    "name": "Weather",
+    "url": "https://weather.databookman.com",
+    "icon": "Cloud"
+  },
+  {
+    "name": "Music",
+    "url": "https://music.databookman.com",
+    "icon": "MusicNote"
+  },
+  {
+    "name": "Kitchen",
+    "url": "https://kitchen.databookman.com",
+    "icon": "Restaurant"
+  },
+  {
+    "name": "Sports",
+    "url": "https://sports.databookman.com",
+    "icon": "SportsSoccer"
+  },
+  {
+    "name": "Dating",
+    "url": "https://dating.databookman.com",
+    "icon": "Favorite"
+  },
+  {
+    "name": "Chess",
+    "url": "https://chess.databookman.com",
+    "icon": "Extension"
+  },
+  {
+    "name": "Swiss",
+    "url": "https://swiss.databookman.com",
+    "icon": "Flag"
+  },
+  {
+    "name": "Horizon",
+    "url": "https://horizon.databookman.com",
+    "icon": "Landscape"
+  },
+  {
+    "name": "Jobhunt",
+    "url": "https://jobhunt.databookman.com",
+    "icon": "Work"
+  },
+  {
+    "name": "Tech",
+    "url": "https://tech.databookman.com",
+    "icon": "Laptop"
+  },
+  {
+    "name": "Kaggle",
+    "url": "https://kaggle.databookman.com",
+    "icon": "Equalizer"
+  },
+  {
+    "name": "Martian",
+    "url": "https://martian.databookman.com",
+    "icon": "RocketLaunch"
   }
 ]
