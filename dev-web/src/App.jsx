@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Box, IconButton, Typography } from '@mui/material'
-import Magnet from './components/Magnet'
+import PixelTransition from './components/PixelTransition'
 import PublicIcon from '@mui/icons-material/Public'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import * as Icons from '@mui/icons-material'
@@ -52,7 +52,7 @@ function App() {
               <MoreHorizIcon />
             </IconButton>
           ) : (
-            <Magnet key={item.url} style={{ width: '100%', height: '100%' }}>
+            <PixelTransition key={item.url} style={{ width: '100%', height: '100%' }}>
               <IconButton
                 sx={{
                   width: '100%',
@@ -83,7 +83,7 @@ function App() {
                   </Typography>
                 </Box>
               </IconButton>
-            </Magnet>
+            </PixelTransition>
           )
         ))}
       </Box>
