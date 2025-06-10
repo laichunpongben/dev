@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Box, IconButton, Typography } from '@mui/material'
 import PixelTransition from './components/PixelTransition'
+import SplitText from './components/SplitText'
 import PublicIcon from '@mui/icons-material/Public'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import * as Icons from '@mui/icons-material'
@@ -8,6 +9,10 @@ import './App.css'
 
 function App() {
   const [links, setLinks] = useState([])
+
+  const handleAnimationComplete = () => {
+    console.log('All letters have animated!')
+  }
 
   useEffect(() => {
     fetch('/subdomains.json')
@@ -30,7 +35,20 @@ function App() {
 
   return (
     <Box textAlign="center" p={2}>
-      <h1>Dev Portal</h1>
+      <SplitText
+        text="Dev Portal"
+        className="portal-title"
+        delay={100}
+        duration={0.6}
+        ease="power3.out"
+        splitType="chars"
+        from={{ opacity: 0, y: 40 }}
+        to={{ opacity: 1, y: 0 }}
+        threshold={0.1}
+        rootMargin="-100px"
+        textAlign="center"
+        onLetterAnimationComplete={handleAnimationComplete}
+      />
       <Box
         display="grid"
         gridTemplateColumns="repeat(5, 1fr)"
