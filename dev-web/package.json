@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "gsap": "^3.12.5",
     "@mui/material": "^5.17.1",
     "@mui/icons-material": "^5.17.1",
     "@emotion/react": "^11.11.0",
