@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Box, IconButton, Typography } from '@mui/material'
+import Magnet from './components/Magnet'
 import PublicIcon from '@mui/icons-material/Public'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import * as Icons from '@mui/icons-material'
@@ -51,37 +52,38 @@ function App() {
               <MoreHorizIcon />
             </IconButton>
           ) : (
-            <IconButton
-              key={item.url}
-              sx={{
-                width: '100%',
-                aspectRatio: '1 / 1',
-                border: '1px solid #ccc',
-                borderRadius: 0,
-                p: 0,
-              }}
-              onClick={() =>
-                window.open(item.url, '_blank', 'noopener,noreferrer')
-              }
-            >
-              <Box
-                display="flex"
-                flexDirection="column"
-                alignItems="center"
-                justifyContent="center"
-                gap={1}
-                sx={{ width: '100%', height: '100%' }}
+            <Magnet key={item.url} style={{ width: '100%', height: '100%' }}>
+              <IconButton
+                sx={{
+                  width: '100%',
+                  aspectRatio: '1 / 1',
+                  border: '1px solid #ccc',
+                  borderRadius: 0,
+                  p: 0,
+                }}
+                onClick={() =>
+                  window.open(item.url, '_blank', 'noopener,noreferrer')
+                }
               >
-                {item.Icon ? (
-                  <item.Icon fontSize="large" />
-                ) : (
-                  <PublicIcon fontSize="large" />
-                )}
-                <Typography variant="caption" mt={0.5}>
-                  {item.name}
-                </Typography>
-              </Box>
-            </IconButton>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  gap={1}
+                  sx={{ width: '100%', height: '100%' }}
+                >
+                  {item.Icon ? (
+                    <item.Icon fontSize="large" />
+                  ) : (
+                    <PublicIcon fontSize="large" />
+                  )}
+                  <Typography variant="caption" mt={0.5}>
+                    {item.name}
+                  </Typography>
+                </Box>
+              </IconButton>
+            </Magnet>
           )
         ))}
       </Box>
