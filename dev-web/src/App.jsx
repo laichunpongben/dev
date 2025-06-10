@@ -175,7 +175,9 @@ function App() {
         gap={2}
         mb={2}
       >
+        <Typography variant="body2" component="span">&lt;</Typography>
         <ShinyText text="Ben Lai" speed={3} className="signature" />
+        <Typography variant="body2" component="span">/&gt;</Typography>
         <IconButton
           component="a"
           href="https://github.com/laichunpongben"
