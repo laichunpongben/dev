@@ -80,6 +80,7 @@ function App() {
                 flexDirection="column"
                 alignItems="center"
                 justifyContent="center"
+                gap={1}
                 sx={{ width: '100%', height: '100%' }}
               >
                 {item.Icon ? (
