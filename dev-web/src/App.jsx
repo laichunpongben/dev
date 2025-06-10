@@ -181,9 +181,10 @@ function App() {
       <Box
         display="flex"
         justifyContent="center"
-        alignItems="center"
+        alignItems="flex-start"
         gap={2}
         mb={2}
+        className="icon-row"
       >
         <ShinyText text="Ben Lai" speed={3} className="signature" />
         <IconButton
@@ -194,7 +195,7 @@ function App() {
           size="medium"
           sx={{ color: 'inherit', borderRadius: '50%' }}
         >
-          <Icons.GitHub fontSize="large" />
+          <Icons.GitHub fontSize="large" sx={{ verticalAlign: 'top' }} />
         </IconButton>
         <IconButton
           component="a"
@@ -204,7 +205,7 @@ function App() {
           size="medium"
           sx={{ color: 'inherit', borderRadius: '50%' }}
         >
-          <SiKaggle size="1.5em" />
+          <SiKaggle size="1.5em" style={{ verticalAlign: 'top' }} />
         </IconButton>
         <IconButton
           component="a"
@@ -214,7 +215,7 @@ function App() {
           size="medium"
           sx={{ color: 'inherit', borderRadius: '50%' }}
         >
-          <Icons.LinkedIn fontSize="large" />
+          <Icons.LinkedIn fontSize="large" sx={{ verticalAlign: 'top' }} />
         </IconButton>
         <IconButton
           component="a"
@@ -222,7 +223,7 @@ function App() {
           size="medium"
           sx={{ color: 'inherit', borderRadius: '50%' }}
         >
-          <Icons.Email fontSize="large" />
+          <Icons.Email fontSize="large" sx={{ verticalAlign: 'top' }} />
         </IconButton>
       </Box>
       <Typography component="footer" variant="body2">
