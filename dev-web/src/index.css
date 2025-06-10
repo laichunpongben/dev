@@ -66,4 +66,8 @@ footer {
   font-size: 2rem;
 }
 
+.icon-row svg {
+  vertical-align: top;
+}
+
 
