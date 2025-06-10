@@ -1,4 +1,12 @@
 [
-  { "name": "Gallery", "url": "https://gallery.databookman.com" },
-  { "name": "Quant", "url": "https://quant.databookman.com" }
+  {
+    "name": "Gallery",
+    "url": "https://gallery.databookman.com",
+    "icon": "PhotoLibrary"
+  },
+  {
+    "name": "Quant",
+    "url": "https://quant.databookman.com",
+    "icon": "Functions"
+  }
 ]
