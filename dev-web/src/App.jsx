@@ -181,38 +181,38 @@ function App() {
           href="https://github.com/laichunpongben"
           target="_blank"
           rel="noopener noreferrer"
-          size="small"
+          size="medium"
           sx={{ color: 'inherit', borderRadius: '50%' }}
         >
-          <Icons.GitHub fontSize="small" />
+          <Icons.GitHub fontSize="large" />
         </IconButton>
         <IconButton
           component="a"
           href="https://www.kaggle.com/benlai"
           target="_blank"
           rel="noopener noreferrer"
-          size="small"
+          size="medium"
           sx={{ color: 'inherit', borderRadius: '50%' }}
         >
-          <SiKaggle size="1em" />
+          <SiKaggle size="1.5em" />
         </IconButton>
         <IconButton
           component="a"
           href="https://www.linkedin.com/in/ben-lai-16812667/"
           target="_blank"
           rel="noopener noreferrer"
-          size="small"
+          size="medium"
           sx={{ color: 'inherit', borderRadius: '50%' }}
         >
-          <Icons.LinkedIn fontSize="small" />
+          <Icons.LinkedIn fontSize="large" />
         </IconButton>
         <IconButton
           component="a"
           href="mailto:laichunpongben@gmail.com"
-          size="small"
+          size="medium"
           sx={{ color: 'inherit', borderRadius: '50%' }}
         >
-          <Icons.Email fontSize="small" />
+          <Icons.Email fontSize="large" />
         </IconButton>
       </Box>
       <Typography component="footer" variant="body2">
