@@ -68,5 +68,15 @@
     "name": "Martian",
     "url": "https://martian.databookman.com",
     "icon": "RocketLaunch"
+  },
+  {
+    "name": "Library",
+    "url": "https://library.databookman.com",
+    "icon": "LibraryBooks"
+  },
+  {
+    "name": "Diplomacy",
+    "url": "https://diplomacy.databookman.com",
+    "icon": "Handshake"
   }
 ]
