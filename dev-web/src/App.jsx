@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Box, IconButton, Typography, Tooltip } from '@mui/material'
+import { Box, IconButton, Typography, Snackbar, Alert } from '@mui/material'
 import ShinyText from './components/ShinyText'
 import PixelTransition from './components/PixelTransition'
 import SplitText from './components/SplitText'
@@ -11,21 +11,20 @@ import './App.css'
 
 function App() {
   const [links, setLinks] = useState([])
-  const [failedIndex, setFailedIndex] = useState(null)
+  const [alertOpen, setAlertOpen] = useState(false)
 
-  const checkAndOpen = async (url, index) => {
+  const checkAndOpen = async (url) => {
     try {
       const res = await fetch(url, { method: 'HEAD' })
       if (res.ok) {
         window.open(url, '_blank', 'noopener,noreferrer')
-        setFailedIndex(null)
       } else {
-        setFailedIndex(index)
+        setAlertOpen(true)
         console.warn(`Link ${url} returned ${res.status}`)
       }
     } catch {
       // if the check fails (e.g. CORS), do not open the link
-      setFailedIndex(index)
+      setAlertOpen(true)
       console.warn(`Failed to fetch ${url}`)
     }
   }
@@ -35,12 +34,12 @@ function App() {
   }
 
   useEffect(() => {
-    if (failedIndex !== null) {
-      const timer = setTimeout(() => setFailedIndex(null), 3000)
+    if (alertOpen) {
+      const timer = setTimeout(() => setAlertOpen(false), 2000)
       return () => clearTimeout(timer)
     }
     return undefined
-  }, [failedIndex])
+  }, [alertOpen])
 
   useEffect(() => {
     fetch('/subdomains.json')
@@ -116,76 +115,64 @@ function App() {
               pixelColor="#fff"
               animationStepDuration={0.4}
               firstContent={
-                <Tooltip
-                  title="Failed to open link"
-                  arrow
-                  open={failedIndex === idx}
+                <IconButton
+                  sx={{
+                    width: '100%',
+                    aspectRatio: '1 / 1',
+                    border: '1px solid #ccc',
+                    borderRadius: 0,
+                    p: 0,
+                  }}
+                  onClick={() => checkAndOpen(item.url)}
                 >
-                  <IconButton
-                    sx={{
-                      width: '100%',
-                      aspectRatio: '1 / 1',
-                      border: '1px solid #ccc',
-                      borderRadius: 0,
-                      p: 0,
-                    }}
-                    onClick={() => checkAndOpen(item.url, idx)}
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                    gap={1}
+                    sx={{ width: '100%', height: '100%' }}
                   >
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center"
-                      justifyContent="center"
-                      gap={1}
-                      sx={{ width: '100%', height: '100%' }}
-                    >
-                      {item.Icon ? (
-                        <item.Icon fontSize="large" />
-                      ) : (
-                        <PublicIcon fontSize="large" />
-                      )}
-                      <Typography variant="caption" mt={0.5}>
-                        {item.name}
-                      </Typography>
-                    </Box>
-                  </IconButton>
-                </Tooltip>
+                    {item.Icon ? (
+                      <item.Icon fontSize="large" />
+                    ) : (
+                      <PublicIcon fontSize="large" />
+                    )}
+                    <Typography variant="caption" mt={0.5}>
+                      {item.name}
+                    </Typography>
+                  </Box>
+                </IconButton>
               }
               secondContent={
-                <Tooltip
-                  title="Failed to open link"
-                  arrow
-                  open={failedIndex === idx}
+                <IconButton
+                  sx={{
+                    width: '100%',
+                    aspectRatio: '1 / 1',
+                    border: '1px solid #ccc',
+                    borderRadius: 0,
+                    p: 0,
+                  }}
+                  onClick={() => checkAndOpen(item.url)}
                 >
-                  <IconButton
-                    sx={{
-                      width: '100%',
-                      aspectRatio: '1 / 1',
-                      border: '1px solid #ccc',
-                      borderRadius: 0,
-                      p: 0,
-                    }}
-                    onClick={() => checkAndOpen(item.url, idx)}
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    justifyContent="center"
+                    gap={1}
+                    sx={{ width: '100%', height: '100%' }}
                   >
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      alignItems="center"
-                      justifyContent="center"
-                      gap={1}
-                      sx={{ width: '100%', height: '100%' }}
-                    >
-                      {item.Icon ? (
-                        <item.Icon fontSize="large" />
-                      ) : (
-                        <PublicIcon fontSize="large" />
-                      )}
-                      <Typography variant="caption" mt={0.5}>
-                        {item.name}
-                      </Typography>
-                    </Box>
-                  </IconButton>
-                </Tooltip>
+                    {item.Icon ? (
+                      <item.Icon fontSize="large" />
+                    ) : (
+                      <PublicIcon fontSize="large" />
+                    )}
+                    <Typography variant="caption" mt={0.5}>
+                      {item.name}
+                    </Typography>
+                  </Box>
+                </IconButton>
               }
             />
           )
@@ -243,6 +230,16 @@ function App() {
       <Typography component="footer" variant="body2">
         © 2025 Databookman by Ben Lai
       </Typography>
+      <Snackbar
+        open={alertOpen}
+        onClose={() => setAlertOpen(false)}
+        autoHideDuration={2000}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert severity="error" sx={{ width: '100%' }}>
+          Failed to open link
+        </Alert>
+      </Snackbar>
     </Box>
   )
 }
