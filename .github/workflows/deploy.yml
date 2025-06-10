@@ -6,7 +6,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-deploy:
+  sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: '>= 363.0.0'
+
+  build-push-deploy:
     runs-on: ubuntu-latest
 
     permissions:
@@ -23,18 +31,15 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        id: checkout-code
 
       - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          workload_identity_provider: ${{ secrets.GCP_WID_POOL }}
-          service_account:             ${{ secrets.GCP_SA_EMAIL }}
-
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v2
+        uses: google-github-actions/auth@v2
+        id: auth-gcloud
         with:
           project_id: ${{ env.GCP_PROJECT_ID }}
+          workload_identity_provider: ${{ secrets.GCP_WID_POOL }}
 
       - name: Configure Docker for Artifact Registry
         run: |
