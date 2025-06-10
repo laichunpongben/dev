@@ -100,7 +100,23 @@ export default function PixelTransition({
     if (!isActive) animatePixels(true)
   }
   const handleMouseLeave = () => {
-    if (isActive) animatePixels(false)
+    if (isActive) {
+      const pixelGridEl = pixelGridRef.current
+      const activeEl = activeRef.current
+      if (pixelGridEl && activeEl) {
+        const pixels = pixelGridEl.querySelectorAll(
+          '.pixelated-image-card__pixel',
+        )
+        gsap.killTweensOf(pixels)
+        if (delayedCallRef.current) {
+          delayedCallRef.current.kill()
+        }
+        gsap.set(pixels, { display: 'none' })
+        activeEl.style.display = 'none'
+        activeEl.style.pointerEvents = ''
+      }
+      setIsActive(false)
+    }
   }
   const handleClick = () => {
     animatePixels(!isActive)
