@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Box, IconButton } from '@mui/material'
+import { Box, IconButton, Typography } from '@mui/material'
 import PublicIcon from '@mui/icons-material/Public'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import './App.css'
@@ -69,12 +69,28 @@ function App() {
                 aspectRatio: '1 / 1',
                 border: '1px solid #ccc',
                 borderRadius: 0,
+                p: 0,
               }}
               onClick={() =>
                 window.open(item.url, '_blank', 'noopener,noreferrer')
               }
             >
-              {item.Icon ? <item.Icon /> : <PublicIcon />}
+              <Box
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+                sx={{ width: '100%', height: '100%' }}
+              >
+                {item.Icon ? (
+                  <item.Icon fontSize="large" />
+                ) : (
+                  <PublicIcon fontSize="large" />
+                )}
+                <Typography variant="caption" mt={0.5}>
+                  {item.name}
+                </Typography>
+              </Box>
             </IconButton>
           )
         ))}
