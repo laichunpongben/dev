@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Box, IconButton, Typography } from '@mui/material'
+import ShinyText from './components/ShinyText'
 import PixelTransition from './components/PixelTransition'
 import SplitText from './components/SplitText'
 import PublicIcon from '@mui/icons-material/Public'
@@ -174,19 +175,7 @@ function App() {
         gap={2}
         mb={2}
       >
-        <Typography
-          id="signature"
-          className="signature"
-          sx={{
-            mr: 1,
-            fontFamily: '"Agustina", "Agustina Regular", sans-serif',
-            fontWeight: 'bold',
-            fontVariantLigatures: 'none',
-            fontSize: '2rem',
-          }}
-        >
-          Ben Lai
-        </Typography>
+        <ShinyText text="Ben Lai" speed={3} className="signature" />
         <IconButton
           component="a"
           href="https://github.com/laichunpongben"
