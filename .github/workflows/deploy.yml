@@ -8,27 +8,53 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read       # to fetch repo
+      id-token: write      # to mint OIDC token
+
     env:
-      IMAGE_NAME: ${{ secrets.GCP_REGISTRY_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_REGISTRY_REPO }}/${{ secrets.GCP_SERVICE_NAME }}:latest
-      RUN_REGION: ${{ secrets.GCP_RUN_REGION }}
-      SERVICE_NAME: ${{ secrets.GCP_SERVICE_NAME }}
+      # Non-sensitive settings stored as GitHub Variables (vars)
+      GCP_PROJECT_ID:      ${{ vars.GCP_PROJECT_ID }}
+      GCP_REGISTRY_REGION: ${{ vars.GCP_REGISTRY_REGION }}
+      GCP_REGISTRY_REPO:   ${{ vars.GCP_REGISTRY_REPO }}
+      GCP_SERVICE_NAME:    ${{ vars.GCP_SERVICE_NAME }}
+      GCP_RUN_REGION:      ${{ vars.GCP_RUN_REGION }}
+
+      # Dynamic tag from current commit SHA
+      IMAGE_TAG:           ${{ github.sha }}
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: google-github-actions/setup-gcloud@v1
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
         with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
-      - name: Authenticate Docker with Artifact Registry
-        run: gcloud auth configure-docker "${{ secrets.GCP_REGISTRY_REGION }}-docker.pkg.dev" --quiet
-      - name: Build Docker image
-        run: docker build -t "$IMAGE_NAME" ./dev-web
-      - name: Push Docker image
-        run: docker push "$IMAGE_NAME"
-      - name: Deploy to Cloud Run
+          workload_identity_provider: ${{ secrets.GCP_WID_POOL }}
+          service_account:             ${{ secrets.GCP_SA_EMAIL }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id:                   ${{ env.GCP_PROJECT_ID }}
+          export_default_credentials:   true
+
+      - name: Configure Docker for Artifact Registry
         run: |
-          gcloud run deploy "$SERVICE_NAME" \
-            --image "$IMAGE_NAME" \
-            --platform=managed \
-            --region "$RUN_REGION" \
-            --allow-unauthenticated
+          gcloud auth configure-docker \
+            "${{ env.GCP_REGISTRY_REGION }}-docker.pkg.dev" --quiet
+
+      - name: Build & Push Docker image
+        run: |
+          IMAGE_URI="${{ env.GCP_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_REPO }}/${{ env.GCP_SERVICE_NAME }}:$IMAGE_TAG"
+          docker build -t "$IMAGE_URI" ./dev-web
+          docker push "$IMAGE_URI"
+
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service:               ${{ env.GCP_SERVICE_NAME }}
+          image:                 ${{ env.GCP_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_REPO }}/${{ env.GCP_SERVICE_NAME }}:$IMAGE_TAG
+          region:                ${{ env.GCP_RUN_REGION }}
+          allow_unauthenticated: true
