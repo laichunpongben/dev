@@ -1,48 +1,8 @@
 [
   {
-    "name": "Gallery",
-    "url": "https://gallery.databookman.com",
-    "icon": "PhotoLibrary"
-  },
-  {
-    "name": "Quant",
-    "url": "https://quant.databookman.com",
-    "icon": "Functions"
-  },
-  {
-    "name": "Weather",
-    "url": "https://weather.databookman.com",
-    "icon": "Cloud"
-  },
-  {
-    "name": "Music",
-    "url": "https://music.databookman.com",
-    "icon": "MusicNote"
-  },
-  {
-    "name": "Kitchen",
-    "url": "https://kitchen.databookman.com",
-    "icon": "Restaurant"
-  },
-  {
-    "name": "Sports",
-    "url": "https://sports.databookman.com",
-    "icon": "SportsSoccer"
-  },
-  {
-    "name": "Dating",
-    "url": "https://dating.databookman.com",
-    "icon": "Favorite"
-  },
-  {
-    "name": "Chess",
-    "url": "https://chess.databookman.com",
-    "icon": "Extension"
-  },
-  {
-    "name": "Swiss",
-    "url": "https://swiss.databookman.com",
-    "icon": "Flag"
+    "name": "Air",
+    "url": "https://air.databookman.com",
+    "icon": "Flight"
   },
   {
     "name": "Horizon",
@@ -50,19 +10,14 @@
     "icon": "Landscape"
   },
   {
-    "name": "Jobhunt",
-    "url": "https://jobhunt.databookman.com",
-    "icon": "Work"
+    "name": "Swiss",
+    "url": "https://swiss.databookman.com",
+    "icon": "Flag"
   },
   {
-    "name": "Tech",
-    "url": "https://tech.databookman.com",
-    "icon": "Laptop"
-  },
-  {
-    "name": "Kaggle",
-    "url": "https://kaggle.databookman.com",
-    "icon": "Equalizer"
+    "name": "Antarctica",
+    "url": "https://antarctica.databookman.com",
+    "icon": "AcUnit"
   },
   {
     "name": "Martian",
@@ -70,19 +25,14 @@
     "icon": "RocketLaunch"
   },
   {
-    "name": "Library",
-    "url": "https://library.databookman.com",
-    "icon": "LibraryBooks"
+    "name": "Weather",
+    "url": "https://weather.databookman.com",
+    "icon": "Cloud"
   },
   {
-    "name": "Diplomacy",
-    "url": "https://diplomacy.databookman.com",
-    "icon": "Handshake"
-  },
-  {
-    "name": "Air",
-    "url": "https://air.databookman.com",
-    "icon": "Flight"
+    "name": "Tech",
+    "url": "https://tech.databookman.com",
+    "icon": "Laptop"
   },
   {
     "name": "Builder",
@@ -95,8 +45,58 @@
     "icon": "Security"
   },
   {
-    "name": "Antarctica",
-    "url": "https://antarctica.databookman.com",
-    "icon": "AcUnit"
+    "name": "Kaggle",
+    "url": "https://kaggle.databookman.com",
+    "icon": "Equalizer"
+  },
+  {
+    "name": "Quant",
+    "url": "https://quant.databookman.com",
+    "icon": "Functions"
+  },
+  {
+    "name": "Library",
+    "url": "https://library.databookman.com",
+    "icon": "LibraryBooks"
+  },
+  {
+    "name": "Gallery",
+    "url": "https://gallery.databookman.com",
+    "icon": "PhotoLibrary"
+  },
+  {
+    "name": "Music",
+    "url": "https://music.databookman.com",
+    "icon": "MusicNote"
+  },
+  {
+    "name": "Sports",
+    "url": "https://sports.databookman.com",
+    "icon": "SportsSoccer"
+  },
+  {
+    "name": "Chess",
+    "url": "https://chess.databookman.com",
+    "icon": "Extension"
+  },
+  {
+    "name": "Kitchen",
+    "url": "https://kitchen.databookman.com",
+    "icon": "Restaurant"
+  },
+  {
+    "name": "Dating",
+    "url": "https://dating.databookman.com",
+    "icon": "Favorite"
+  },
+  {
+    "name": "Jobhunt",
+    "url": "https://jobhunt.databookman.com",
+    "icon": "Work"
+  },
+  {
+    "name": "Diplomacy",
+    "url": "https://diplomacy.databookman.com",
+    "icon": "Handshake"
   }
 ]
