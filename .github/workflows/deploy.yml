@@ -20,5 +20,6 @@ jobs:
           bash ./deploy_cloud_run.sh
         env:
           PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-          REGION: ${{ secrets.GCP_REGION }}
+          REGISTRY_REGION: ${{ secrets.GCP_REGISTRY_REGION }}
+          RUN_REGION: ${{ secrets.GCP_RUN_REGION }}
           SERVICE_NAME: ${{ secrets.GCP_SERVICE_NAME }}
