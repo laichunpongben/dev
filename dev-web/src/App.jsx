@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Box, IconButton, Typography } from '@mui/material'
 import PublicIcon from '@mui/icons-material/Public'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import * as Icons from '@mui/icons-material'
 import './App.css'
 
 function App() {
@@ -10,23 +11,11 @@ function App() {
   useEffect(() => {
     fetch('/subdomains.json')
       .then((res) => res.json())
-      .then(async (data) => {
-        const withIcons = await Promise.all(
-          data.map(async (item) => {
-            let Icon = PublicIcon
-            if (item.icon) {
-              try {
-                const mod = await import(
-                  /* @vite-ignore */ `@mui/icons-material/${item.icon}`
-                )
-                Icon = mod.default
-              } catch (err) {
-                console.error(`Failed to load icon ${item.icon}`, err)
-              }
-            }
-            return { ...item, Icon }
-          })
-        )
+      .then((data) => {
+        const withIcons = data.map((item) => {
+          const Icon = item.icon && Icons[item.icon] ? Icons[item.icon] : PublicIcon
+          return { ...item, Icon }
+        })
         setLinks(withIcons)
       })
       .catch((err) => console.error('Failed to load subdomains', err))
