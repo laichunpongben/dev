@@ -98,5 +98,15 @@
     "name": "Diplomacy",
     "url": "https://diplomacy.databookman.com",
     "icon": "Handshake"
+  },
+  {
+    "name": "Fixed Income",
+    "url": "https://fi.databookman.com",
+    "icon": "AttachMoney"
+  },
+  {
+    "name": "Daily Prophet",
+    "url": "https://dailyprophet.databookman.com",
+    "icon": "MenuBook"
   }
 ]
