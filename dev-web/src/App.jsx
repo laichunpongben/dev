@@ -34,15 +34,27 @@ function App() {
             <IconButton
               key={`ph-${idx}`}
               disabled
-              sx={{ width: '100%', aspectRatio: '1 / 1' }}
+              sx={{
+                width: '100%',
+                aspectRatio: '1 / 1',
+                border: '1px solid #ccc',
+                borderRadius: 0,
+              }}
             >
               <MoreHorizIcon />
             </IconButton>
           ) : (
             <IconButton
               key={item.url}
-              sx={{ width: '100%', aspectRatio: '1 / 1' }}
-              onClick={() => window.open(item.url, '_blank', 'noopener,noreferrer')}
+              sx={{
+                width: '100%',
+                aspectRatio: '1 / 1',
+                border: '1px solid #ccc',
+                borderRadius: 0,
+              }}
+              onClick={() =>
+                window.open(item.url, '_blank', 'noopener,noreferrer')
+              }
             >
               <PublicIcon />
             </IconButton>
