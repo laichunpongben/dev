@@ -88,5 +88,10 @@
     "name": "Builder",
     "url": "https://builder.databookman.com",
     "icon": "Build"
+  },
+  {
+    "name": "Cybersecurity",
+    "url": "https://cybersecurity.databookman.com",
+    "icon": "Security"
   }
 ]
