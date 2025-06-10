@@ -10,7 +10,25 @@ function App() {
   useEffect(() => {
     fetch('/subdomains.json')
       .then((res) => res.json())
-      .then((data) => setLinks(data))
+      .then(async (data) => {
+        const withIcons = await Promise.all(
+          data.map(async (item) => {
+            let Icon = PublicIcon
+            if (item.icon) {
+              try {
+                const mod = await import(
+                  /* @vite-ignore */ `@mui/icons-material/${item.icon}`
+                )
+                Icon = mod.default
+              } catch (err) {
+                console.error(`Failed to load icon ${item.icon}`, err)
+              }
+            }
+            return { ...item, Icon }
+          })
+        )
+        setLinks(withIcons)
+      })
       .catch((err) => console.error('Failed to load subdomains', err))
   }, [])
 
@@ -56,7 +74,7 @@ function App() {
                 window.open(item.url, '_blank', 'noopener,noreferrer')
               }
             >
-              <PublicIcon />
+              {item.Icon ? <item.Icon /> : <PublicIcon />}
             </IconButton>
           )
         ))}
