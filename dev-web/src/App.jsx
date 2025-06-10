@@ -34,7 +34,14 @@ function App() {
   }
 
   return (
-    <Box textAlign="center" p={2}>
+    <Box
+      textAlign="center"
+      p={2}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      minHeight="100vh"
+    >
       <SplitText
         text="Dev Portal"
         className="portal-title"
