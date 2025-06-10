@@ -174,6 +174,9 @@ function App() {
         gap={2}
         mb={2}
       >
+        <Typography id="signature" className="signature" sx={{ mr: 1 }}>
+          Ben Lai
+        </Typography>
         <IconButton
           component="a"
           href="https://github.com/laichunpongben"
