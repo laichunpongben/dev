@@ -68,7 +68,7 @@ function App() {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      height="100svh"
+      height="100dvh"
       width="100%"
       overflow="hidden"
     >
