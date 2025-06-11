@@ -44,12 +44,16 @@ function App() {
   useEffect(() => {
     fetch('/subdomains.json')
       .then((res) => res.json())
-        .then((data) => {
-          const withIcons = data.map((item) => {
-            const Icon = item.icon && Icons[item.icon] ? Icons[item.icon] : PublicIcon
-            return { ...item, Icon, enabled: item.enabled !== false }
-          })
-          setLinks(withIcons)
+      .then((data) => {
+        const withIcons = data.map((item) => {
+          const Icon = item.icon && Icons[item.icon] ? Icons[item.icon] : PublicIcon
+          return { ...item, Icon, enabled: item.enabled !== false }
+        })
+        const sorted = withIcons.sort((a, b) => {
+          if (a.enabled === b.enabled) return 0
+          return a.enabled ? -1 : 1
+        })
+        setLinks(sorted)
       })
       .catch((err) => console.error('Failed to load subdomains', err))
   }, [])
