@@ -13,6 +13,7 @@ import AnimatedBackground from './components/AnimatedBackground'
 function App() {
   const [links, setLinks] = useState([])
   const [alertOpen, setAlertOpen] = useState(false)
+  const [showBunny, setShowBunny] = useState(false)
 
   const checkAndOpen = async (url) => {
     try {
@@ -33,6 +34,11 @@ function App() {
   const handleAnimationComplete = () => {
     console.log('All letters have animated!')
   }
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setShowBunny(true))
+    return () => cancelAnimationFrame(id)
+  }, [])
 
   useEffect(() => {
     if (alertOpen) {
@@ -77,7 +83,7 @@ function App() {
       p={{ xs: 0.5, sm: 2 }}
       sx={{ position: 'relative' }}
     >
-      <AnimatedBackground className="animated-background" />
+      {showBunny && <AnimatedBackground className="animated-background" />}
       <SplitText
         text="Dev Portal"
         className="portal-title"
