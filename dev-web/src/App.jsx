@@ -68,9 +68,8 @@ function App() {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      height="100dvh"
+      height="100vh"
       width="100%"
-      overflow="hidden"
     >
       <SplitText
         text="Dev Portal"
@@ -87,13 +86,20 @@ function App() {
         onLetterAnimationComplete={handleAnimationComplete}
       />
       <Box
-        display="grid"
-        gridTemplateColumns="repeat(4, 1fr)"
-        gap={2}
-        mt={4}
-        pb={4}
-        sx={{ width: '100%', maxWidth: 600, mx: 'auto', flexGrow: 1, overflowY: 'auto' }}
+        sx={{
+          width: '100%',
+          maxWidth: 600,
+          mt: 4,
+          flex: '1 1 0px',
+          overflowY: 'auto',
+          overflowX: 'hidden',
+        }}
       >
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(4, 1fr)"
+          gap={2}
+        >
         {items.map((item, idx) => (
           item.placeholder ? (
             <IconButton
@@ -186,6 +192,7 @@ function App() {
             </Box>
           )
         ))}
+        </Box>
       </Box>
       <Box
         display="grid"
