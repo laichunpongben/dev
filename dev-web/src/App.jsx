@@ -195,15 +195,21 @@ function App() {
         </Box>
       </Box>
       <Box
-        display="grid"
-        gridTemplateColumns="repeat(5, 1fr)"
-        gap={2}
-        mt={2}
-        mb={2}
-        className="icon-row"
-        width="100%"
-        alignItems="center"
+        sx={{
+          width: '100%',
+          maxWidth: 600,
+          mx: 'auto',
+          mt: 2,
+          mb: 2,
+        }}
       >
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(5, 1fr)"
+          gap={2}
+          className="icon-row"
+          alignItems="center"
+        >
         <ShinyText text="Ben Lai" speed={3} className="signature" />
           <IconButton
             component="a"
@@ -264,7 +270,18 @@ function App() {
             <Icons.Email fontSize="large" sx={{ verticalAlign: 'top' }} />
           </IconButton>
         </Box>
-      <Typography component="footer" variant="body2">
+      </Box>
+      <Typography
+        component="footer"
+        variant="body2"
+        sx={{
+          width: '100%',
+          maxWidth: 600,
+          mx: 'auto',
+          mb: 2,
+          textAlign: 'center',
+        }}
+      >
         © 2025 Databookman by Ben Lai
       </Typography>
       <Snackbar
