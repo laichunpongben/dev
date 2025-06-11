@@ -8,6 +8,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import * as Icons from '@mui/icons-material'
 import { SiKaggle } from 'react-icons/si'
 import './App.css'
+import AnimatedBackground from './components/AnimatedBackground'
 
 function App() {
   const [links, setLinks] = useState([])
@@ -74,7 +75,9 @@ function App() {
       height="100vh"
       width="100%"
       p={{ xs: 0.5, sm: 2 }}
+      sx={{ position: 'relative' }}
     >
+      <AnimatedBackground className="animated-background" />
       <SplitText
         text="Dev Portal"
         className="portal-title"
