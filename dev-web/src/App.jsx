@@ -322,9 +322,10 @@ function App() {
               borderRadius: '50%',
               aspectRatio: '1 / 1',
               width: '100%',
+              '& svg': { fontSize: { xs: '1.5rem', sm: '2rem' } },
             }}
           >
-            <Icons.GitHub fontSize="large" sx={{ verticalAlign: 'top' }} />
+            <Icons.GitHub sx={{ verticalAlign: 'top' }} />
           </IconButton>
           <IconButton
             component="a"
@@ -337,9 +338,10 @@ function App() {
               borderRadius: '50%',
               aspectRatio: '1 / 1',
               width: '100%',
+              '& svg': { fontSize: { xs: '1.5rem', sm: '2rem' } },
             }}
           >
-            <SiKaggle size="1.5em" style={{ verticalAlign: 'top' }} />
+            <SiKaggle style={{ verticalAlign: 'top' }} />
           </IconButton>
           <IconButton
             component="a"
@@ -352,9 +354,10 @@ function App() {
               borderRadius: '50%',
               aspectRatio: '1 / 1',
               width: '100%',
+              '& svg': { fontSize: { xs: '1.5rem', sm: '2rem' } },
             }}
           >
-            <Icons.LinkedIn fontSize="large" sx={{ verticalAlign: 'top' }} />
+            <Icons.LinkedIn sx={{ verticalAlign: 'top' }} />
           </IconButton>
           <IconButton
             component="a"
@@ -365,9 +368,10 @@ function App() {
               borderRadius: '50%',
               aspectRatio: '1 / 1',
               width: '100%',
+              '& svg': { fontSize: { xs: '1.5rem', sm: '2rem' } },
             }}
           >
-            <Icons.Email fontSize="large" sx={{ verticalAlign: 'top' }} />
+            <Icons.Email sx={{ verticalAlign: 'top' }} />
           </IconButton>
         </Box>
       </Box>

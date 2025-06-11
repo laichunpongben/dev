@@ -73,12 +73,16 @@ footer {
 
 .icon-row svg {
   vertical-align: top;
+  font-size: 2rem;
 }
 
 @media (max-width: 600px) {
   .signature {
     white-space: nowrap;
     display: inline-block;
+  }
+  .icon-row svg {
+    font-size: 1.5rem;
   }
 }
 
