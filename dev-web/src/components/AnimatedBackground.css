@@ -30,13 +30,13 @@
     transform: translateX(calc(-1 * var(--bunny-size)));
   }
   to {
-    transform: translateX(calc(100vw + var(--bunny-size)));
+    transform: translateX(calc(100% + var(--bunny-size)));
   }
 }
 
 @keyframes runAcrossReverse {
   from {
-    transform: translateX(calc(100vw + var(--bunny-size))) scaleX(-1);
+    transform: translateX(calc(100% + var(--bunny-size))) scaleX(-1);
   }
   to {
     transform: translateX(calc(-1 * var(--bunny-size))) scaleX(-1);
