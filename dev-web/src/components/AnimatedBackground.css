@@ -11,7 +11,9 @@
   bottom: 5rem;
   --bunny-size: clamp(80px, 25vw, 300px);
   width: var(--bunny-size);
+  opacity: 0;
   animation:
+    fadeIn 0.4s forwards,
     runAcross 4s linear forwards,
     fadeOut 0.4s 3.6s forwards;
 }
@@ -31,5 +33,14 @@
   }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
