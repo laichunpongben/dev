@@ -8,7 +8,7 @@
 
 .running-bunny {
   position: absolute;
-  bottom: 5rem;
+  bottom: 6rem;
   --bunny-size: clamp(80px, 25vw, 300px);
   width: var(--bunny-size);
   opacity: 0;
