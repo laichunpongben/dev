@@ -8,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger, GSAPSplitText)
 export default function SplitText({
   text,
   className = '',
+  onClick,
   delay = 100,
   duration = 0.6,
   ease = 'power3.out',
@@ -101,8 +102,10 @@ export default function SplitText({
   return (
     <p
       ref={ref}
+      onClick={onClick}
       className={`split-parent ${className}`}
       style={{
+        cursor: onClick ? 'pointer' : undefined,
         textAlign,
         overflow: 'hidden',
         display: 'inline-block',
