@@ -10,6 +10,7 @@ import * as Icons from '@mui/icons-material'
 import { SiKaggle } from 'react-icons/si'
 import './App.css'
 import AnimatedBackground from './components/AnimatedBackground'
+import DecryptedText from './components/DecryptedText'
 
 function App() {
   const [links, setLinks] = useState([])
@@ -17,6 +18,7 @@ function App() {
   const [showBunny, setShowBunny] = useState(false)
   const [bunnyCount, setBunnyCount] = useState(0)
   const [collapsed, setCollapsed] = useState(true)
+  const [showDecrypted, setShowDecrypted] = useState(false)
   const bunnyReverse = bunnyCount % 2 === 0
 
   const checkAndOpen = async (url) => {
@@ -48,6 +50,11 @@ function App() {
     // restart animation by toggling visibility
     setShowBunny(false)
     setTimeout(showNextBunny, 0)
+  }
+
+  const handleSignatureClick = () => {
+    setShowDecrypted(true)
+    setTimeout(() => setShowDecrypted(false), 10000)
   }
 
   useEffect(() => {
@@ -305,16 +312,20 @@ function App() {
         ))}
         </Box>
       </Box>
-      <Box
-        sx={{
-          width: '100%',
-          maxWidth: 600,
-          mx: 'auto',
-          mt: { xs: 1, sm: 2 },
-          mb: { xs: 1, sm: 2 },
-          px: 0,
-        }}
-      >
+      {showDecrypted ? (
+        <Box
+          sx={{
+            width: '100%',
+            maxWidth: 600,
+            mx: 'auto',
+            mt: { xs: 1, sm: 2 },
+            mb: { xs: 1, sm: 2 },
+            textAlign: 'center',
+          }}
+        >
+          <DecryptedText text="I love Python!" animateOn="view" revealDirection="center" />
+        </Box>
+      ) : (
         <Box
           display="grid"
           gridTemplateColumns={{ xs: '3fr repeat(4,1fr)', sm: '2fr repeat(4,1fr)' }}
@@ -322,7 +333,7 @@ function App() {
           className="icon-row"
           alignItems="center"
         >
-        <ShinyText text="Ben Lai" speed={3} className="signature" />
+          <ShinyText text="Ben Lai" speed={3} className="signature" onClick={handleSignatureClick} />
           <IconButton
             component="a"
             href="https://github.com/laichunpongben"
@@ -386,7 +397,7 @@ function App() {
             <Icons.Email sx={{ verticalAlign: 'top' }} />
           </IconButton>
         </Box>
-      </Box>
+      )}
       <Typography
         component="footer"
         variant="body2"
