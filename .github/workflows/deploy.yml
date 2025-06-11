@@ -43,6 +43,7 @@ jobs:
           project_id: ${{ env.GCP_PROJECT_ID }}
           workload_identity_provider: ${{ secrets.GCP_WID_POOL }}
           service_account: ${{ secrets.GCP_SA_EMAIL }}
+          token_format: 'access_token'
 
       - name: Dump access token info
         run: |
