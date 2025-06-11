@@ -320,7 +320,7 @@ function App() {
             mx: 'auto',
             mt: { xs: 1, sm: 2 },
             mb: { xs: 1, sm: 2 },
-            textAlign: 'center',
+            textAlign: 'left',
           }}
         >
           <DecryptedText text="Who Am I? 
