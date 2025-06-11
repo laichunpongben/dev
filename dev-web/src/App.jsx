@@ -36,7 +36,9 @@ function App() {
   }
 
   const handleTitleClick = () => {
-    if (!showBunny) setShowBunny(true)
+    // restart animation by toggling visibility
+    setShowBunny(false)
+    requestAnimationFrame(() => setShowBunny(true))
   }
 
   useEffect(() => {
