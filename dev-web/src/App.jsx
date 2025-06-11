@@ -64,16 +64,17 @@ function App() {
   return (
     <Box
       textAlign="center"
-      p={2}
       display="flex"
       flexDirection="column"
       alignItems="center"
       height="100vh"
       width="100%"
+      p={{ xs: 1, sm: 2 }}
     >
       <SplitText
         text="Dev Portal"
         className="portal-title"
+        sx={{ fontSize: { xs: '2rem', sm: '3.2rem' } }}
         delay={100}
         duration={0.6}
         ease="power3.out"
@@ -93,12 +94,13 @@ function App() {
           flex: '1 1 0px',
           overflowY: 'auto',
           overflowX: 'hidden',
+          px: { xs: 1, sm: 0 },
         }}
       >
         <Box
           display="grid"
           gridTemplateColumns="repeat(4, 1fr)"
-          gap={2}
+          gap={{ xs: 1, sm: 2 }}
         >
         {items.map((item, idx) => (
           item.placeholder ? (
@@ -144,15 +146,24 @@ function App() {
                     flexDirection="column"
                     alignItems="center"
                     justifyContent="center"
-                    gap={1}
+                    gap={{ xs: 0.5, sm: 1 }}
                     sx={{ width: '100%', height: '100%' }}
                   >
                     {item.Icon ? (
-                      <item.Icon fontSize="large" />
+                      <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
                     ) : (
-                      <PublicIcon fontSize="large" />
+                      <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
                     )}
-                    <Typography variant="caption" mt={0.5}>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        mt: { xs: 0.25, sm: 0.5 },
+                        fontSize: { xs: '0.6rem', sm: '0.75rem' },
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
                       {item.name}
                     </Typography>
                   </Box>
@@ -174,15 +185,24 @@ function App() {
                     flexDirection="column"
                     alignItems="center"
                     justifyContent="center"
-                    gap={1}
+                    gap={{ xs: 0.5, sm: 1 }}
                     sx={{ width: '100%', height: '100%' }}
                   >
                     {item.Icon ? (
-                      <item.Icon fontSize="large" />
+                      <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
                     ) : (
-                      <PublicIcon fontSize="large" />
+                      <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
                     )}
-                    <Typography variant="caption" mt={0.5}>
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        mt: { xs: 0.25, sm: 0.5 },
+                        fontSize: { xs: '0.6rem', sm: '0.75rem' },
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
                       {item.name}
                     </Typography>
                   </Box>
@@ -201,12 +221,13 @@ function App() {
           mx: 'auto',
           mt: 2,
           mb: 2,
+          px: { xs: 1, sm: 0 },
         }}
       >
         <Box
           display="grid"
-          gridTemplateColumns="2fr repeat(4, 1fr)"
-          gap={2}
+          gridTemplateColumns={{ xs: '3fr repeat(4,1fr)', sm: '2fr repeat(4,1fr)' }}
+          gap={{ xs: 1, sm: 2 }}
           className="icon-row"
           alignItems="center"
         >
@@ -278,9 +299,9 @@ function App() {
           width: '100%',
           maxWidth: 600,
           mx: 'auto',
-          mb: 4,
-          pb: 2,
           textAlign: 'center',
+          mb: { xs: 4, sm: 2 },
+          pb: { xs: 2, sm: 0 },
         }}
       >
         © 2025 Databookman by Ben Lai
