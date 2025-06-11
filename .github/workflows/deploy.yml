@@ -44,6 +44,11 @@ jobs:
           workload_identity_provider: ${{ secrets.GCP_WID_POOL }}
           service_account: ${{ env.GCP_SA_EMAIL }}
 
+      - name: Dump access token info
+        run: |
+          gcloud auth print-access-token --format="json" | jq .
+          gcloud auth list
+
       - name: Configure Docker for Artifact Registry
         run: |
           gcloud auth configure-docker \
