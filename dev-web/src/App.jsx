@@ -21,6 +21,12 @@ function App() {
   const [showDecrypted, setShowDecrypted] = useState(false)
   const bunnyReverse = bunnyCount % 2 === 0
 
+  const whoAmIText =
+    'Who Am I?\n' +
+    'An enthusiast of technology and science.\n' +
+    'A builder of the next generation intelligence.\n' +
+    'A traveler and photographer when out of office.'
+
   const checkAndOpen = async (url) => {
     try {
       const res = await fetch(url, { method: 'HEAD' })
@@ -323,10 +329,7 @@ function App() {
             textAlign: 'left',
           }}
         >
-          <DecryptedText text="Who Am I? 
-          An enthusiast of technology and science. 
-          A builder of the next generation intelligence. 
-          A traveler and photographer when out of office." speed={50} sequential={true} animateOn="view" />
+          <DecryptedText text={whoAmIText} speed={50} sequential={true} animateOn="view" />
         </Box>
       ) : (
         <Box
