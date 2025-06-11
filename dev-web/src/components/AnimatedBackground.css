@@ -14,15 +14,15 @@
   opacity: 0;
   animation:
     fadeIn 0.4s forwards,
-    runAcross 4s linear forwards,
-    fadeOut 0.4s 3.6s forwards;
+    runAcross 2s linear forwards,
+    fadeOut 0.4s 1.6s forwards;
 }
 
 .running-bunny.reverse {
   animation:
     fadeIn 0.4s forwards,
-    runAcrossReverse 4s linear forwards,
-    fadeOut 0.4s 3.6s forwards;
+    runAcrossReverse 2s linear forwards,
+    fadeOut 0.4s 1.6s forwards;
 }
 
 @keyframes runAcross {
