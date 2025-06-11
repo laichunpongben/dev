@@ -339,6 +339,7 @@ function App() {
           gap={{ xs: 1, sm: 2 }}
           className="icon-row"
           alignItems="center"
+          sx={{ pt: { xs: 1, sm: 2 } }}
         >
           <ShinyText text="Ben Lai" speed={3} className="signature" onClick={handleSignatureClick} />
           <IconButton
