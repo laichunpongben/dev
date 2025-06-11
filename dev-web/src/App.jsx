@@ -116,6 +116,7 @@ function App() {
         onLetterAnimationComplete={handleAnimationComplete}
       />
       <Box
+        className="link-grid"
         sx={{
           width: '100%',
           maxWidth: 600,
