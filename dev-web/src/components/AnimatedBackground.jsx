@@ -31,13 +31,22 @@ export default function AnimatedBackground({ className = '' }) {
         </linearGradient>
       </defs>
       <rect width="200" height="200" fill="url(#bgGrad)">
-        <animate
-          attributeName="opacity"
-          values="0;1;1;0"
-          dur="2.5s"
-          fill="freeze"
-        />
+        <animate attributeName="opacity" values="0;1" dur="1.5s" fill="freeze" />
       </rect>
+      <g>
+        <circle cx="100" cy="100" r="0" fill="none" stroke="url(#bgGrad)" strokeWidth="40">
+          <animate attributeName="r" values="0;150" dur="1.5s" fill="freeze" />
+          <animate attributeName="opacity" values="1;0" dur="1.5s" fill="freeze" />
+        </circle>
+        <circle cx="100" cy="100" r="0" fill="none" stroke="url(#bgGrad)" strokeWidth="40">
+          <animate attributeName="r" values="0;150" dur="1.5s" begin="0.3s" fill="freeze" />
+          <animate attributeName="opacity" values="1;0" dur="1.5s" begin="0.3s" fill="freeze" />
+        </circle>
+        <circle cx="100" cy="100" r="0" fill="none" stroke="url(#bgGrad)" strokeWidth="40">
+          <animate attributeName="r" values="0;150" dur="1.5s" begin="0.6s" fill="freeze" />
+          <animate attributeName="opacity" values="1;0" dur="1.5s" begin="0.6s" fill="freeze" />
+        </circle>
+      </g>
     </svg>
   )
 }
