@@ -182,52 +182,79 @@ function App() {
       </Box>
       <Box
         display="flex"
-        justifyContent="center"
-        alignItems="flex-start"
-        gap={2}
+        flexDirection="column"
+        alignItems="center"
         mb={2}
-        className="icon-row"
         width="100%"
       >
         <ShinyText text="Ben Lai" speed={3} className="signature" />
-        <IconButton
-          component="a"
-          href="https://github.com/laichunpongben"
-          target="_blank"
-          rel="noopener noreferrer"
-          size="medium"
-          sx={{ color: 'inherit', borderRadius: '50%', aspectRatio: '1 / 1' }}
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(4, 1fr)"
+          gap={2}
+          mt={1}
+          className="icon-row"
+          width="100%"
         >
-          <Icons.GitHub fontSize="large" sx={{ verticalAlign: 'top' }} />
-        </IconButton>
-        <IconButton
-          component="a"
-          href="https://www.kaggle.com/benlai"
-          target="_blank"
-          rel="noopener noreferrer"
-          size="medium"
-          sx={{ color: 'inherit', borderRadius: '50%', aspectRatio: '1 / 1' }}
-        >
-          <SiKaggle size="1.5em" style={{ verticalAlign: 'top' }} />
-        </IconButton>
-        <IconButton
-          component="a"
-          href="https://www.linkedin.com/in/ben-lai-16812667/"
-          target="_blank"
-          rel="noopener noreferrer"
-          size="medium"
-          sx={{ color: 'inherit', borderRadius: '50%', aspectRatio: '1 / 1' }}
-        >
-          <Icons.LinkedIn fontSize="large" sx={{ verticalAlign: 'top' }} />
-        </IconButton>
-        <IconButton
-          component="a"
-          href="mailto:laichunpongben@gmail.com"
-          size="medium"
-          sx={{ color: 'inherit', borderRadius: '50%', aspectRatio: '1 / 1' }}
-        >
-          <Icons.Email fontSize="large" sx={{ verticalAlign: 'top' }} />
-        </IconButton>
+          <IconButton
+            component="a"
+            href="https://github.com/laichunpongben"
+            target="_blank"
+            rel="noopener noreferrer"
+            size="medium"
+            sx={{
+              color: 'inherit',
+              borderRadius: '50%',
+              aspectRatio: '1 / 1',
+              width: '100%',
+            }}
+          >
+            <Icons.GitHub fontSize="large" sx={{ verticalAlign: 'top' }} />
+          </IconButton>
+          <IconButton
+            component="a"
+            href="https://www.kaggle.com/benlai"
+            target="_blank"
+            rel="noopener noreferrer"
+            size="medium"
+            sx={{
+              color: 'inherit',
+              borderRadius: '50%',
+              aspectRatio: '1 / 1',
+              width: '100%',
+            }}
+          >
+            <SiKaggle size="1.5em" style={{ verticalAlign: 'top' }} />
+          </IconButton>
+          <IconButton
+            component="a"
+            href="https://www.linkedin.com/in/ben-lai-16812667/"
+            target="_blank"
+            rel="noopener noreferrer"
+            size="medium"
+            sx={{
+              color: 'inherit',
+              borderRadius: '50%',
+              aspectRatio: '1 / 1',
+              width: '100%',
+            }}
+          >
+            <Icons.LinkedIn fontSize="large" sx={{ verticalAlign: 'top' }} />
+          </IconButton>
+          <IconButton
+            component="a"
+            href="mailto:laichunpongben@gmail.com"
+            size="medium"
+            sx={{
+              color: 'inherit',
+              borderRadius: '50%',
+              aspectRatio: '1 / 1',
+              width: '100%',
+            }}
+          >
+            <Icons.Email fontSize="large" sx={{ verticalAlign: 'top' }} />
+          </IconButton>
+        </Box>
       </Box>
       <Typography component="footer" variant="body2">
         © 2025 Databookman by Ben Lai
