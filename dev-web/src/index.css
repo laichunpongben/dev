@@ -86,4 +86,13 @@ footer {
   }
 }
 
+.link-grid {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.link-grid::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
 
