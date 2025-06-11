@@ -24,11 +24,11 @@ jobs:
       id-token: write
 
     env:
-      GCP_PROJECT_ID:      ${{ vars.GCP_PROJECT_ID }}
-      GCP_REGISTRY_REGION: ${{ vars.GCP_REGISTRY_REGION }}
-      GCP_REGISTRY_REPO:   ${{ vars.GCP_REGISTRY_REPO }}
-      GCP_SERVICE_NAME:    ${{ vars.GCP_SERVICE_NAME }}
-      GCP_RUN_REGION:      ${{ vars.GCP_RUN_REGION }}
+      GCP_PROJECT_ID:      ${{ secrets.GCP_PROJECT_ID }}
+      GCP_REGISTRY_REGION: ${{ secrets.GCP_REGISTRY_REGION }}
+      GCP_REGISTRY_REPO:   ${{ secrets.GCP_REGISTRY_REPO }}
+      GCP_SERVICE_NAME:    ${{ secrets.GCP_SERVICE_NAME }}
+      GCP_RUN_REGION:      ${{ secrets.GCP_RUN_REGION }}
       IMAGE_TAG:           ${{ github.sha }}
 
     steps:
