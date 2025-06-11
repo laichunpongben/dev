@@ -44,12 +44,12 @@ function App() {
   useEffect(() => {
     fetch('/subdomains.json')
       .then((res) => res.json())
-      .then((data) => {
-        const withIcons = data.map((item) => {
-          const Icon = item.icon && Icons[item.icon] ? Icons[item.icon] : PublicIcon
-          return { ...item, Icon }
-        })
-        setLinks(withIcons)
+        .then((data) => {
+          const withIcons = data.map((item) => {
+            const Icon = item.icon && Icons[item.icon] ? Icons[item.icon] : PublicIcon
+            return { ...item, Icon, enabled: item.enabled !== false }
+          })
+          setLinks(withIcons)
       })
       .catch((err) => console.error('Failed to load subdomains', err))
   }, [])
@@ -119,7 +119,7 @@ function App() {
             >
               <MoreHorizIcon />
             </IconButton>
-          ) : (
+          ) : item.enabled ? (
             <Box
               key={item.url}
               sx={{
@@ -144,74 +144,121 @@ function App() {
                     }}
                     onClick={() => checkAndOpen(item.url)}
                   >
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    gap={{ xs: 0.5, sm: 1 }}
-                    sx={{ width: '100%', height: '100%' }}
-                  >
-                    {item.Icon ? (
-                      <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                    ) : (
-                      <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                    )}
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        mt: { xs: 0.25, sm: 0.5 },
-                        fontSize: { xs: '0.6rem', sm: '0.75rem' },
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                      }}
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                      gap={{ xs: 0.5, sm: 1 }}
+                      sx={{ width: '100%', height: '100%' }}
                     >
-                      {item.name}
-                    </Typography>
-                  </Box>
-                </IconButton>
-              }
-              secondContent={
-                <IconButton
-                  sx={{
-                    width: '100%',
-                    height: '100%',
-                    border: '1px solid #ccc',
-                    borderRadius: '15px',
-                    p: 0,
-                  }}
-                  onClick={() => checkAndOpen(item.url)}
+                      {item.Icon ? (
+                        <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+                      ) : (
+                        <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+                      )}
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          mt: { xs: 0.25, sm: 0.5 },
+                          fontSize: { xs: '0.6rem', sm: '0.75rem' },
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                      >
+                        {item.name}
+                      </Typography>
+                    </Box>
+                  </IconButton>
+                }
+                secondContent={
+                  <IconButton
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      border: '1px solid #ccc',
+                      borderRadius: '15px',
+                      p: 0,
+                    }}
+                    onClick={() => checkAndOpen(item.url)}
+                  >
+                    <Box
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                      gap={{ xs: 0.5, sm: 1 }}
+                      sx={{ width: '100%', height: '100%' }}
+                    >
+                      {item.Icon ? (
+                        <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+                      ) : (
+                        <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+                      )}
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          mt: { xs: 0.25, sm: 0.5 },
+                          fontSize: { xs: '0.6rem', sm: '0.75rem' },
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                      >
+                        {item.name}
+                      </Typography>
+                    </Box>
+                  </IconButton>
+                }
+              />
+            </Box>
+          ) : (
+            <Box
+              key={item.url}
+              sx={{
+                width: '100%',
+                aspectRatio: '1 / 1',
+              }}
+            >
+              <IconButton
+                disabled
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  border: '1px solid #ccc',
+                  borderRadius: '15px',
+                  p: 0,
+                  opacity: 0.5,
+                }}
+              >
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  gap={{ xs: 0.5, sm: 1 }}
+                  sx={{ width: '100%', height: '100%' }}
                 >
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    gap={{ xs: 0.5, sm: 1 }}
-                    sx={{ width: '100%', height: '100%' }}
+                  {item.Icon ? (
+                    <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+                  ) : (
+                    <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+                  )}
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      mt: { xs: 0.25, sm: 0.5 },
+                      fontSize: { xs: '0.6rem', sm: '0.75rem' },
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
                   >
-                    {item.Icon ? (
-                      <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                    ) : (
-                      <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                    )}
-                    <Typography
-                      variant="caption"
-                      sx={{
-                        mt: { xs: 0.25, sm: 0.5 },
-                        fontSize: { xs: '0.6rem', sm: '0.75rem' },
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                      }}
-                    >
-                      {item.name}
-                    </Typography>
-                  </Box>
-                </IconButton>
-              }
-            />
+                    {item.name}
+                  </Typography>
+                </Box>
+              </IconButton>
             </Box>
           )
         ))}
