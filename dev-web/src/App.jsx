@@ -196,7 +196,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
           size="medium"
-          sx={{ color: 'inherit', borderRadius: '50%' }}
+          sx={{ color: 'inherit', borderRadius: '50%', aspectRatio: '1 / 1' }}
         >
           <Icons.GitHub fontSize="large" sx={{ verticalAlign: 'top' }} />
         </IconButton>
@@ -206,7 +206,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
           size="medium"
-          sx={{ color: 'inherit', borderRadius: '50%' }}
+          sx={{ color: 'inherit', borderRadius: '50%', aspectRatio: '1 / 1' }}
         >
           <SiKaggle size="1.5em" style={{ verticalAlign: 'top' }} />
         </IconButton>
@@ -216,7 +216,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
           size="medium"
-          sx={{ color: 'inherit', borderRadius: '50%' }}
+          sx={{ color: 'inherit', borderRadius: '50%', aspectRatio: '1 / 1' }}
         >
           <Icons.LinkedIn fontSize="large" sx={{ verticalAlign: 'top' }} />
         </IconButton>
@@ -224,7 +224,7 @@ function App() {
           component="a"
           href="mailto:laichunpongben@gmail.com"
           size="medium"
-          sx={{ color: 'inherit', borderRadius: '50%' }}
+          sx={{ color: 'inherit', borderRadius: '50%', aspectRatio: '1 / 1' }}
         >
           <Icons.Email fontSize="large" sx={{ verticalAlign: 'top' }} />
         </IconButton>
