@@ -18,12 +18,29 @@
     fadeOut 0.4s 3.6s forwards;
 }
 
+.running-bunny.reverse {
+  transform: scaleX(-1);
+  animation:
+    fadeIn 0.4s forwards,
+    runAcrossReverse 4s linear forwards,
+    fadeOut 0.4s 3.6s forwards;
+}
+
 @keyframes runAcross {
   from {
     transform: translateX(calc(-1 * var(--bunny-size)));
   }
   to {
     transform: translateX(calc(100vw + var(--bunny-size)));
+  }
+}
+
+@keyframes runAcrossReverse {
+  from {
+    transform: translateX(calc(100vw + var(--bunny-size)));
+  }
+  to {
+    transform: translateX(calc(-1 * var(--bunny-size)));
   }
 }
 

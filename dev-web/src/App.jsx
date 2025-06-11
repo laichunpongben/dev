@@ -15,7 +15,9 @@ function App() {
   const [links, setLinks] = useState([])
   const [alertOpen, setAlertOpen] = useState(false)
   const [showBunny, setShowBunny] = useState(false)
+  const [bunnyCount, setBunnyCount] = useState(0)
   const [collapsed, setCollapsed] = useState(true)
+  const bunnyReverse = bunnyCount % 2 === 0
 
   const checkAndOpen = async (url) => {
     try {
@@ -37,14 +39,19 @@ function App() {
     console.log('All letters have animated!')
   }
 
+  const showNextBunny = () => {
+    setBunnyCount((c) => c + 1)
+    setShowBunny(true)
+  }
+
   const handleTitleClick = () => {
     // restart animation by toggling visibility
     setShowBunny(false)
-    setTimeout(() => setShowBunny(true), 0)
+    setTimeout(showNextBunny, 0)
   }
 
   useEffect(() => {
-    const id = requestAnimationFrame(() => setShowBunny(true))
+    const id = requestAnimationFrame(showNextBunny)
     return () => cancelAnimationFrame(id)
   }, [])
 
@@ -95,7 +102,12 @@ function App() {
       p={{ xs: 0.5, sm: 2 }}
       sx={{ position: 'relative' }}
     >
-      {showBunny && <AnimatedBackground className="animated-background" />}
+      {showBunny && (
+        <AnimatedBackground
+          className="animated-background"
+          reverse={bunnyReverse}
+        />
+      )}
       <SplitText
         text="Dev Portal"
         className="portal-title"
