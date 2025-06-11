@@ -35,10 +35,22 @@ function App() {
     console.log('All letters have animated!')
   }
 
+  const handleTitleClick = () => {
+    if (!showBunny) setShowBunny(true)
+  }
+
   useEffect(() => {
     const id = requestAnimationFrame(() => setShowBunny(true))
     return () => cancelAnimationFrame(id)
   }, [])
+
+  useEffect(() => {
+    if (showBunny) {
+      const timer = setTimeout(() => setShowBunny(false), 4000)
+      return () => clearTimeout(timer)
+    }
+    return undefined
+  }, [showBunny])
 
   useEffect(() => {
     if (alertOpen) {
@@ -87,6 +99,7 @@ function App() {
       <SplitText
         text="Dev Portal"
         className="portal-title"
+        onClick={handleTitleClick}
         sx={{
           fontSize: { xs: '1.8rem', sm: '3.2rem' },
           my: { xs: 1, sm: 2 },
