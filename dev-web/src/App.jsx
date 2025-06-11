@@ -15,7 +15,7 @@ function App() {
   const [links, setLinks] = useState([])
   const [alertOpen, setAlertOpen] = useState(false)
   const [showBunny, setShowBunny] = useState(false)
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(true)
 
   const checkAndOpen = async (url) => {
     try {
