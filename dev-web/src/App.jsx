@@ -109,24 +109,30 @@ function App() {
               <MoreHorizIcon />
             </IconButton>
           ) : (
-            <PixelTransition
+            <Box
               key={item.url}
-              style={{ width: '100%' }}
-              aspectRatio="100%"
-              gridSize={12}
-              pixelColor="#fff"
-              animationStepDuration={0.4}
-              firstContent={
-                <IconButton
-                  sx={{
-                    width: '100%',
-                    aspectRatio: '1 / 1',
-                    border: '1px solid #ccc',
-                    borderRadius: 0,
-                    p: 0,
-                  }}
-                  onClick={() => checkAndOpen(item.url)}
-                >
+              sx={{
+                width: '100%',
+                aspectRatio: '1 / 1',
+              }}
+            >
+              <PixelTransition
+                style={{ width: '100%', height: '100%' }}
+                aspectRatio="0"
+                gridSize={12}
+                pixelColor="#fff"
+                animationStepDuration={0.4}
+                firstContent={
+                  <IconButton
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      border: '1px solid #ccc',
+                      borderRadius: '15px',
+                      p: 0,
+                    }}
+                    onClick={() => checkAndOpen(item.url)}
+                  >
                   <Box
                     display="flex"
                     flexDirection="column"
@@ -150,9 +156,9 @@ function App() {
                 <IconButton
                   sx={{
                     width: '100%',
-                    aspectRatio: '1 / 1',
+                    height: '100%',
                     border: '1px solid #ccc',
-                    borderRadius: 0,
+                    borderRadius: '15px',
                     p: 0,
                   }}
                   onClick={() => checkAndOpen(item.url)}
@@ -177,6 +183,7 @@ function App() {
                 </IconButton>
               }
             />
+            </Box>
           )
         ))}
       </Box>
