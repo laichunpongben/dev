@@ -69,12 +69,15 @@ function App() {
       alignItems="center"
       height="100vh"
       width="100%"
-      p={{ xs: 1, sm: 2 }}
+      p={{ xs: 0.5, sm: 2 }}
     >
       <SplitText
         text="Dev Portal"
         className="portal-title"
-        sx={{ fontSize: { xs: '2rem', sm: '3.2rem' } }}
+        sx={{
+          fontSize: { xs: '1.8rem', sm: '3.2rem' },
+          my: { xs: 1, sm: 2 },
+        }}
         delay={100}
         duration={0.6}
         ease="power3.out"
@@ -90,11 +93,11 @@ function App() {
         sx={{
           width: '100%',
           maxWidth: 600,
-          mt: 4,
+          mt: { xs: 2, sm: 4 },
           flex: '1 1 0px',
           overflowY: 'auto',
           overflowX: 'hidden',
-          px: { xs: 1, sm: 0 },
+          px: { xs: 0, sm: 0 },
         }}
       >
         <Box
@@ -219,9 +222,9 @@ function App() {
           width: '100%',
           maxWidth: 600,
           mx: 'auto',
-          mt: 2,
-          mb: 2,
-          px: { xs: 1, sm: 0 },
+          mt: { xs: 1, sm: 2 },
+          mb: { xs: 1, sm: 2 },
+          px: 0,
         }}
       >
         <Box
@@ -300,8 +303,8 @@ function App() {
           maxWidth: 600,
           mx: 'auto',
           textAlign: 'center',
-          mb: { xs: 4, sm: 2 },
-          pb: { xs: 2, sm: 0 },
+          my: { xs: 1, sm: 2 },
+          pb: { xs: 1, sm: 0 },
         }}
       >
         © 2025 Databookman by Ben Lai
