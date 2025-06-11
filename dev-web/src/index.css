@@ -75,4 +75,11 @@ footer {
   vertical-align: top;
 }
 
+@media (max-width: 600px) {
+  .signature {
+    white-space: nowrap;
+    display: inline-block;
+  }
+}
+
 
