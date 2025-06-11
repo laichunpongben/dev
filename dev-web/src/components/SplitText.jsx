@@ -105,7 +105,6 @@ export default function SplitText({
       onClick={onClick}
       className={`split-parent ${className}`}
       style={{
-        cursor: onClick ? 'pointer' : undefined,
         textAlign,
         overflow: 'hidden',
         display: 'inline-block',
