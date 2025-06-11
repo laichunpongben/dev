@@ -59,7 +59,9 @@ jobs:
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
-          service:               ${{ env.GCP_SERVICE_NAME }}
-          image:                 ${{ env.GCP_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_REPO }}/${{ env.GCP_SERVICE_NAME }}:${{ env.IMAGE_TAG }}
-          region:                ${{ env.GCP_RUN_REGION }}
-          allow_unauthenticated: true
+          service: ${{ env.GCP_SERVICE_NAME }}
+          image:  ${{ env.GCP_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_REPO }}/${{ env.GCP_SERVICE_NAME }}:${{ env.IMAGE_TAG }}
+          region: ${{ env.GCP_RUN_REGION }}
+          flags: |
+            --allow-unauthenticated
+            --port=80
