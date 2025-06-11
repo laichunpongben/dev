@@ -19,6 +19,7 @@ function App() {
   const [bunnyCount, setBunnyCount] = useState(0)
   const [collapsed, setCollapsed] = useState(true)
   const [showDecrypted, setShowDecrypted] = useState(false)
+  const [showTechStack, setShowTechStack] = useState(false)
   const bunnyReverse = bunnyCount % 2 === 0
 
   const whoAmIText =
@@ -60,7 +61,15 @@ function App() {
 
   const handleSignatureClick = () => {
     setShowDecrypted(true)
-    setTimeout(() => setShowDecrypted(false), 20000)
+    setShowTechStack(false)
+    setTimeout(() => {
+      setShowDecrypted(false)
+      setShowTechStack(false)
+    }, 20000)
+  }
+
+  const handleDecryptComplete = () => {
+    setShowTechStack(true)
   }
 
   useEffect(() => {
@@ -326,11 +335,36 @@ function App() {
             mx: 'auto',
             mt: { xs: 1, sm: 2 },
             mb: { xs: 1, sm: 2 },
-            textAlign: 'left',
-            fontSize: { xs: '0.6rem', sm: '1rem' },
           }}
+          display="grid"
+          gridTemplateColumns="3fr 1fr"
+          gap={2}
         >
-          <DecryptedText text={whoAmIText} speed={50} sequential={true} animateOn="view" />
+          <Box
+            sx={{
+              textAlign: 'left',
+              fontSize: { xs: '0.6rem', sm: '1rem' },
+            }}
+          >
+            <DecryptedText
+              text={whoAmIText}
+              speed={50}
+              sequential={true}
+              animateOn="view"
+              onComplete={handleDecryptComplete}
+            />
+          </Box>
+          {showTechStack && (
+            <Typography
+              sx={{
+                whiteSpace: 'pre-line',
+                fontSize: { xs: '0.6rem', sm: '1rem' },
+                textAlign: 'left',
+              }}
+            >
+              {'Tech stack:\nPython\nJavaScript\nLinux'}
+            </Typography>
+          )}
         </Box>
       ) : (
         <Box

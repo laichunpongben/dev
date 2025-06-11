@@ -30,6 +30,7 @@ export default function DecryptedText({
   parentClassName = '',
   encryptedClassName = '',
   animateOn = 'hover',
+  onComplete,
   ...props
 }) {
   const [displayText, setDisplayText] = useState(text)
@@ -128,6 +129,7 @@ export default function DecryptedText({
             } else {
               clearInterval(interval)
               setIsScrambling(false)
+              if (onComplete) onComplete()
               return prevRevealed
             }
           } else {
@@ -137,6 +139,7 @@ export default function DecryptedText({
               clearInterval(interval)
               setIsScrambling(false)
               setDisplayText(text)
+              if (onComplete) onComplete()
             }
             return prevRevealed
           }
@@ -160,6 +163,7 @@ export default function DecryptedText({
     revealDirection,
     characters,
     useOriginalCharsOnly,
+    onComplete,
   ])
 
   useEffect(() => {
