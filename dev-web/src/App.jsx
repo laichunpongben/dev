@@ -327,6 +327,7 @@ function App() {
             mt: { xs: 1, sm: 2 },
             mb: { xs: 1, sm: 2 },
             textAlign: 'left',
+            fontSize: { xs: '0.6rem', sm: '1rem' },
           }}
         >
           <DecryptedText text={whoAmIText} speed={50} sequential={true} animateOn="view" />
@@ -414,6 +415,7 @@ function App() {
           textAlign: 'center',
           my: { xs: 1, sm: 2 },
           pb: { xs: 1, sm: 0 },
+          fontSize: { xs: '0.6rem', sm: '0.875rem' },
         }}
       >
         © 2025 Databookman by Ben Lai
