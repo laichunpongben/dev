@@ -205,7 +205,7 @@ function App() {
       >
         <Box
           display="grid"
-          gridTemplateColumns="repeat(5, 1fr)"
+          gridTemplateColumns="2fr repeat(4, 1fr)"
           gap={2}
           className="icon-row"
           alignItems="center"
@@ -278,7 +278,8 @@ function App() {
           width: '100%',
           maxWidth: 600,
           mx: 'auto',
-          mb: 2,
+          mb: 4,
+          pb: 2,
           textAlign: 'center',
         }}
       >
