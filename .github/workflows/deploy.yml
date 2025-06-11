@@ -16,6 +16,8 @@ jobs:
 
   build-push-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+    needs: [sdk]
 
     permissions:
       contents: read
