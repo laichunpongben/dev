@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 :root {
   font-family: Roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -31,7 +35,8 @@ body {
   flex-direction: column;
   align-items: center;
   min-width: 320px;
-  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
   padding-bottom: 0;
 }
 

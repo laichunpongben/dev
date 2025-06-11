@@ -68,7 +68,9 @@ function App() {
       display="flex"
       flexDirection="column"
       alignItems="center"
-      minHeight="100vh"
+      height="100svh"
+      width="100%"
+      overflow="hidden"
     >
       <SplitText
         text="Dev Portal"
@@ -86,11 +88,11 @@ function App() {
       />
       <Box
         display="grid"
-        gridTemplateColumns="repeat(4, minmax(110px, 1fr))"
+        gridTemplateColumns="repeat(4, 1fr)"
         gap={2}
         mt={4}
         pb={4}
-        sx={{ maxWidth: 600, mx: 'auto' }}
+        sx={{ width: '100%', maxWidth: 600, mx: 'auto', flexGrow: 1, overflowY: 'auto' }}
       >
         {items.map((item, idx) => (
           item.placeholder ? (
@@ -185,6 +187,7 @@ function App() {
         gap={2}
         mb={2}
         className="icon-row"
+        width="100%"
       >
         <ShinyText text="Ben Lai" speed={3} className="signature" />
         <IconButton
