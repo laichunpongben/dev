@@ -38,7 +38,7 @@ function App() {
   const handleTitleClick = () => {
     // restart animation by toggling visibility
     setShowBunny(false)
-    requestAnimationFrame(() => setShowBunny(true))
+    setTimeout(() => setShowBunny(true), 0)
   }
 
   useEffect(() => {
