@@ -54,7 +54,7 @@ function App() {
 
   const handleSignatureClick = () => {
     setShowDecrypted(true)
-    setTimeout(() => setShowDecrypted(false), 10000)
+    setTimeout(() => setShowDecrypted(false), 20000)
   }
 
   useEffect(() => {
@@ -323,7 +323,10 @@ function App() {
             textAlign: 'center',
           }}
         >
-          <DecryptedText text="I love Python!" animateOn="view" revealDirection="center" />
+          <DecryptedText text="Who Am I? 
+          An enthusiast of technology and science. 
+          A builder of the next generation intelligence. 
+          A traveler and photographer when out of office." speed={50} sequential={true} animateOn="view" />
         </Box>
       ) : (
         <Box
