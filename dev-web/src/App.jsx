@@ -101,7 +101,7 @@ function App() {
         className="portal-title"
         onClick={handleTitleClick}
         sx={{
-          fontSize: { xs: '1.8rem', sm: '3.2rem' },
+          fontSize: { xs: '1.6rem', sm: '3.2rem' },
           my: { xs: 1, sm: 2 },
         }}
         delay={100}
