@@ -4,7 +4,8 @@ import ShinyText from './components/ShinyText'
 import PixelTransition from './components/PixelTransition'
 import SplitText from './components/SplitText'
 import PublicIcon from '@mui/icons-material/Public'
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import * as Icons from '@mui/icons-material'
 import { SiKaggle } from 'react-icons/si'
 import './App.css'
@@ -14,6 +15,7 @@ function App() {
   const [links, setLinks] = useState([])
   const [alertOpen, setAlertOpen] = useState(false)
   const [showBunny, setShowBunny] = useState(false)
+  const [collapsed, setCollapsed] = useState(false)
 
   const checkAndOpen = async (url) => {
     try {
@@ -79,12 +81,8 @@ function App() {
       .catch((err) => console.error('Failed to load subdomains', err))
   }, [])
 
-  const items = [...links]
-  const remainder = links.length % 4
-  const placeholders = remainder === 0 ? 0 : 4 - remainder
-  for (let i = 0; i < placeholders; i += 1) {
-    items.push({ placeholder: true })
-  }
+  const visibleLinks = collapsed ? links.filter((l) => l.enabled) : links
+  const items = [...visibleLinks, { toggle: true }]
 
   return (
     <Box
@@ -133,11 +131,10 @@ function App() {
           gridTemplateColumns="repeat(4, 1fr)"
           gap={{ xs: 1, sm: 2 }}
         >
-        {items.map((item, idx) => (
-          item.placeholder ? (
+        {items.map((item) => (
+          item.toggle ? (
             <IconButton
-              key={`ph-${idx}`}
-              disabled
+              key="collapse-toggle"
               sx={{
                 width: '100%',
                 height: '100%',
@@ -145,10 +142,10 @@ function App() {
                 border: '1px solid #ccc',
                 borderRadius: '15px',
                 p: 0,
-                opacity: 0.5,
               }}
+              onClick={() => setCollapsed(!collapsed)}
             >
-              <MoreHorizIcon />
+              {collapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}
             </IconButton>
           ) : item.enabled ? (
             <Box
