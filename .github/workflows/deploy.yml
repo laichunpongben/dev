@@ -42,7 +42,7 @@ jobs:
         with:
           project_id: ${{ env.GCP_PROJECT_ID }}
           workload_identity_provider: ${{ secrets.GCP_WID_POOL }}
-          service_account: ${{ env.GCP_SA_EMAIL }}
+          service_account: ${{ secrets.GCP_SA_EMAIL }}
           create_credentials_file: true
           export_environment_variables: true
           token_format: 'access_token'
