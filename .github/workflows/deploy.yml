@@ -42,6 +42,7 @@ jobs:
         with:
           project_id: ${{ env.GCP_PROJECT_ID }}
           workload_identity_provider: ${{ secrets.GCP_WID_POOL }}
+          service_account: ${{ env.GCP_SA_EMAIL }}
 
       - name: Configure Docker for Artifact Registry
         run: |
