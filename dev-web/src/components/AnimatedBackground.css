@@ -8,7 +8,7 @@
 
 .running-bunny {
   position: absolute;
-  bottom: 0;
+  bottom: 5rem;
   width: 200px;
   animation:
     runAcross 4s linear forwards,
