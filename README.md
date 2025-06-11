@@ -1,6 +1,7 @@
 # dev
 
 This repository contains a simple React portal in the `dev-web` directory.
+The list of links shown on the portal is defined in `dev-web/public/subdomains.json`.
 
 To start the development server:
 
@@ -10,7 +11,15 @@ npm install
 npm run dev
 ```
 
-The site reads a list of available subdomain links from `public/subdomains.json` and displays them as a simple portal.
+Before committing any changes, run the following inside `dev-web` to ensure
+the project lints and builds correctly:
+
+```bash
+npm run lint
+npm run build
+```
+
+The portal reads this file at runtime and shows each enabled entry as a button.
 
 To build a Docker image and deploy the app to Google Cloud Run manually, run the
 following commands with the gcloud CLI installed and authenticated:
