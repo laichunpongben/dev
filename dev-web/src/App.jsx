@@ -32,15 +32,7 @@ function App() {
     try {
       const res = await fetch(url, { method: 'HEAD' })
       if (res.ok) {
-        const target = new URL(url, window.location.href)
-        const getDomain = (hostname) => hostname.split('.').slice(-2).join('.')
-        const targetDomain = getDomain(target.hostname)
-        const currentDomain = getDomain(window.location.hostname)
-        if (targetDomain === currentDomain) {
-          window.location.href = url
-        } else {
-          window.open(url, '_blank', 'noopener,noreferrer')
-        }
+        window.location.href = url
       } else {
         setAlertOpen(true)
         console.warn(`Link ${url} returned ${res.status}`)
@@ -387,8 +379,6 @@ function App() {
           <IconButton
             component="a"
             href="https://github.com/laichunpongben"
-            target="_blank"
-            rel="noopener noreferrer"
             size="medium"
             sx={{
               color: 'inherit',
@@ -403,8 +393,6 @@ function App() {
           <IconButton
             component="a"
             href="https://www.kaggle.com/benlai"
-            target="_blank"
-            rel="noopener noreferrer"
             size="medium"
             sx={{
               color: 'inherit',
@@ -419,8 +407,6 @@ function App() {
           <IconButton
             component="a"
             href="https://www.linkedin.com/in/ben-lai-16812667/"
-            target="_blank"
-            rel="noopener noreferrer"
             size="medium"
             sx={{
               color: 'inherit',
