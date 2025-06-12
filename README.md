@@ -1,7 +1,7 @@
 # dev
 
 This repository contains a simple React portal in the `dev-web` directory.
-The list of links shown on the portal is defined in `dev-web/public/subdomains.json`.
+The list of links shown on the portal is defined in `dev-web/public/services.json`.
 
 To start the development server:
 

@@ -1,7 +1,7 @@
 # dev-web
 
 This folder contains the React portal built with [Vite](https://vitejs.dev/).
-The portal reads enabled links from `public/subdomains.json` and renders them as buttons.
+The portal reads enabled links from `public/services.json` and renders them as buttons.
 
 ## Local development
 

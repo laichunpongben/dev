@@ -16,6 +16,7 @@ export default defineConfig({
         name: 'Dev Portal',
         short_name: 'DevPortal',
         start_url: '/',
+        scope: '/',
         display: 'standalone',
         background_color: '#000000',
         theme_color: '#000000',
