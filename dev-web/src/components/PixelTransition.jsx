@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import { gsap } from 'gsap'
 import './PixelTransition.css'
 
@@ -29,26 +29,27 @@ export default function PixelTransition({
     navigator.maxTouchPoints > 0 ||
     window.matchMedia('(pointer: coarse)').matches
 
-  useEffect(() => {
-    const pixelGridEl = pixelGridRef.current
-    if (!pixelGridEl) return
-
-    pixelGridEl.innerHTML = ''
-
+  const pixels = useMemo(() => {
+    const elements = []
+    const size = 100 / gridSize
     for (let row = 0; row < gridSize; row++) {
       for (let col = 0; col < gridSize; col++) {
-        const pixel = document.createElement('div')
-        pixel.classList.add('pixelated-image-card__pixel')
-        pixel.style.backgroundColor = pixelColor
-
-        const size = 100 / gridSize
-        pixel.style.width = `${size}%`
-        pixel.style.height = `${size}%`
-        pixel.style.left = `${col * size}%`
-        pixel.style.top = `${row * size}%`
-        pixelGridEl.appendChild(pixel)
+        elements.push(
+          <div
+            key={`${row}-${col}`}
+            className="pixelated-image-card__pixel"
+            style={{
+              backgroundColor: pixelColor,
+              width: `${size}%`,
+              height: `${size}%`,
+              left: `${col * size}%`,
+              top: `${row * size}%`,
+            }}
+          />,
+        )
       }
     }
+    return elements
   }, [gridSize, pixelColor])
 
   const animatePixels = (activate) => {
@@ -136,7 +137,9 @@ export default function PixelTransition({
       <div className="pixelated-image-card__active" ref={activeRef}>
         {secondaryContent}
       </div>
-      <div className="pixelated-image-card__pixels" ref={pixelGridRef} />
+      <div className="pixelated-image-card__pixels" ref={pixelGridRef}>
+        {pixels}
+      </div>
     </div>
   )
 }
