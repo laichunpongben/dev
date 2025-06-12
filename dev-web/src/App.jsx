@@ -457,7 +457,6 @@ function App() {
           mx: 'auto',
           textAlign: 'center',
           my: { xs: 1, sm: 2 },
-          pb: { xs: 1, sm: 0 },
           fontSize: { xs: '0.6rem', sm: '0.875rem' },
         }}
       >
