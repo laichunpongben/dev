@@ -10,6 +10,12 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['send.svg'],
       workbox: {
+        // Don’t serve the portal shell for these URLs:
+        navigateFallback: '/index.html',
+        navigateFallbackDenylist: [
+          /^\/diplomacy($|\/)/, // bypass SW for /diplomacy and deeper paths
+          /^\/dailyprophet($|\/)/, // bypass SW for /dailyprophet
+        ],
         maximumFileSizeToCacheInBytes: 5000000,
       },
       manifest: {
