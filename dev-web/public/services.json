@@ -1,133 +1,133 @@
 [
   {
     "name": "Air",
-    "url": "https://air.databookman.com",
+    "url": "/air",
     "icon": "Flight",
     "enabled": false
   },
   {
     "name": "Horizon",
-    "url": "https://horizon.databookman.com",
+    "url": "/horizon",
     "icon": "Landscape",
     "enabled": false
   },
   {
     "name": "Swiss",
-    "url": "https://swiss.databookman.com",
+    "url": "/swiss",
     "icon": "Flag",
     "enabled": false
   },
   {
     "name": "Antarctica",
-    "url": "https://antarctica.databookman.com",
+    "url": "/antarctica",
     "icon": "AcUnit",
     "enabled": false
   },
   {
     "name": "Martian",
-    "url": "https://martian.databookman.com",
+    "url": "/martian",
     "icon": "RocketLaunch",
     "enabled": false
   },
   {
     "name": "Weather",
-    "url": "https://weather.databookman.com",
+    "url": "/weather",
     "icon": "Cloud",
     "enabled": false
   },
   {
     "name": "Tech",
-    "url": "https://tech.databookman.com",
+    "url": "/tech",
     "icon": "Laptop",
     "enabled": false
   },
   {
     "name": "Builder",
-    "url": "https://builder.databookman.com",
+    "url": "/builder",
     "icon": "Build",
     "enabled": false
   },
   {
     "name": "Cybersecurity",
-    "url": "https://cybersecurity.databookman.com",
+    "url": "/cybersecurity",
     "icon": "Security",
     "enabled": false
   },
   {
     "name": "Kaggle",
-    "url": "https://kaggle.databookman.com",
+    "url": "/kaggle",
     "icon": "Equalizer",
     "enabled": false
   },
   {
     "name": "Quant",
-    "url": "https://quant.databookman.com",
+    "url": "/quant",
     "icon": "Functions",
     "enabled": false
   },
   {
     "name": "Library",
-    "url": "https://library.databookman.com",
+    "url": "/library",
     "icon": "LibraryBooks",
     "enabled": false
   },
   {
     "name": "Gallery",
-    "url": "https://gallery.databookman.com",
+    "url": "/gallery",
     "icon": "PhotoLibrary",
     "enabled": false
   },
   {
     "name": "Music",
-    "url": "https://music.databookman.com",
+    "url": "/music",
     "icon": "MusicNote",
     "enabled": false
   },
   {
     "name": "Sports",
-    "url": "https://sports.databookman.com",
+    "url": "/sports",
     "icon": "SportsSoccer",
     "enabled": false
   },
   {
     "name": "Chess",
-    "url": "https://chess.databookman.com",
+    "url": "/chess",
     "icon": "Extension",
     "enabled": false
   },
   {
     "name": "Kitchen",
-    "url": "https://kitchen.databookman.com",
+    "url": "/kitchen",
     "icon": "Restaurant",
     "enabled": false
   },
   {
     "name": "Dating",
-    "url": "https://dating.databookman.com",
+    "url": "/dating",
     "icon": "Favorite",
     "enabled": false
   },
   {
     "name": "Jobhunt",
-    "url": "https://jobhunt.databookman.com",
+    "url": "/jobhunt",
     "icon": "Work",
     "enabled": false
   },
   {
     "name": "Diplomacy",
-    "url": "https://diplomacy.databookman.com",
+    "url": "/diplomacy",
     "icon": "Handshake",
     "enabled": true
   },
   {
     "name": "Fixed Income",
-    "url": "https://fi.databookman.com",
+    "url": "/fi",
     "icon": "AttachMoney",
     "enabled": false
   },
   {
     "name": "Daily Prophet",
-    "url": "https://dailyprophet.databookman.com",
+    "url": "/dailyprophet",
     "icon": "MenuBook",
     "enabled": true
   }

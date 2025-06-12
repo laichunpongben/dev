@@ -94,7 +94,7 @@ function App() {
   }, [alertOpen])
 
   useEffect(() => {
-    fetch('/subdomains.json')
+    fetch('/services.json')
       .then((res) => res.json())
       .then((data) => {
         const withIcons = data.map((item) => {
@@ -107,7 +107,7 @@ function App() {
         })
         setLinks(sorted)
       })
-      .catch((err) => console.error('Failed to load subdomains', err))
+      .catch((err) => console.error('Failed to load links', err))
   }, [])
 
   const visibleLinks = collapsed ? links.filter((l) => l.enabled) : links
