@@ -33,7 +33,10 @@ function App() {
       const res = await fetch(url, { method: 'HEAD' })
       if (res.ok) {
         const target = new URL(url, window.location.href)
-        if (target.origin === window.location.origin) {
+        const getDomain = (hostname) => hostname.split('.').slice(-2).join('.')
+        const targetDomain = getDomain(target.hostname)
+        const currentDomain = getDomain(window.location.hostname)
+        if (targetDomain === currentDomain) {
           window.location.href = url
         } else {
           window.open(url, '_blank', 'noopener,noreferrer')
