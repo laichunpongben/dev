@@ -16,7 +16,13 @@ export default defineConfig({
           /^\/diplomacy($|\/)/, // bypass SW for /diplomacy and deeper paths
           /^\/dailyprophet($|\/)/, // bypass SW for /dailyprophet
         ],
-        maximumFileSizeToCacheInBytes: 5000000,
+        runtimeCaching: [
+          {
+            urlPattern: /^\/diplomacy\/.*$/,
+            handler: 'NetworkOnly',
+          },
+        ],
+        maximumFileSizeToCacheInBytes: 5_000_000,
       },
       manifest: {
         name: 'Dev Portal',
