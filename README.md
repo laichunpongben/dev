@@ -43,3 +43,7 @@ Run. It requires the `GCP_PROJECT_ID`, `GCP_REGISTRY_REGION`, `GCP_RUN_REGION`,
 `GCP_REGISTRY_REPO`, `GCP_SERVICE_NAME`, and `GCP_SA_KEY` secrets to be configured in your repository.
 It authenticates Docker with Artifact Registry using these credentials before
 pushing the image, so no extra registry secret is needed.
+
+The workflow now sets up Docker Buildx and caches build layers using the built-in
+GitHub Actions cache. A small local cache directory is also preserved between
+runs to further speed up Docker builds.
