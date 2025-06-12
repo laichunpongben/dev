@@ -50,11 +50,30 @@ jobs:
           gcloud auth configure-docker \
             "${{ env.GCP_REGISTRY_REGION }}-docker.pkg.dev" --quiet
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        id: buildx
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
       - name: Build & Push Docker image
-        run: |
-          IMAGE_URI="${{ env.GCP_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_REPO }}/${{ env.GCP_SERVICE_NAME }}:${{ env.IMAGE_TAG }}"
-          docker build -t "$IMAGE_URI" ./dev-web
-          docker push "$IMAGE_URI"
+        uses: docker/build-push-action@v6
+        with:
+          context: ./dev-web
+          push: true
+          tags: ${{ env.GCP_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_REPO }}/${{ env.GCP_SERVICE_NAME }}:${{ env.IMAGE_TAG }}
+          cache-from: |
+            type=gha
+            type=local,src=/tmp/.buildx-cache
+          cache-to: |
+            type=gha,mode=max
+            type=local,dest=/tmp/.buildx-cache,mode=max
 
       - name: Deploy to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
