@@ -117,7 +117,7 @@
     "name": "Diplomacy",
     "url": "https://diplomacy.databookman.com",
     "icon": "Handshake",
-    "enabled": false
+    "enabled": true
   },
   {
     "name": "Fixed Income",
