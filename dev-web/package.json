@@ -14,11 +14,12 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.17.1",
     "@mui/material": "^5.17.1",
+    "framer-motion": "^12.17.0",
     "gsap": "^3.12.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^4.11.0",
-    "framer-motion": "^12.17.0"
+    "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
