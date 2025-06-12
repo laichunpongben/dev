@@ -16,13 +16,7 @@ export default defineConfig({
           /^\/diplomacy($|\/)/, // bypass SW for /diplomacy and deeper paths
           /^\/dailyprophet($|\/)/, // bypass SW for /dailyprophet
         ],
-        // Avoid caching the runtime-injected env.js
-        globIgnores: ['**/diplomacy/env.js'],
         runtimeCaching: [
-          {
-            urlPattern: /^\/diplomacy\/env\.js$/,
-            handler: 'NetworkOnly',
-          },
           {
             urlPattern: /^\/diplomacy\/.*$/,
             handler: 'NetworkOnly',
