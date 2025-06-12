@@ -32,7 +32,12 @@ function App() {
     try {
       const res = await fetch(url, { method: 'HEAD' })
       if (res.ok) {
-        window.open(url, '_blank', 'noopener,noreferrer')
+        const target = new URL(url, window.location.href)
+        if (target.origin === window.location.origin) {
+          window.location.href = url
+        } else {
+          window.open(url, '_blank', 'noopener,noreferrer')
+        }
       } else {
         setAlertOpen(true)
         console.warn(`Link ${url} returned ${res.status}`)
