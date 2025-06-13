@@ -129,6 +129,6 @@
     "name": "Daily Prophet",
     "url": "/dailyprophet",
     "icon": "MenuBook",
-    "enabled": true
+    "enabled": false
   }
 ]
