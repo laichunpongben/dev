@@ -116,7 +116,7 @@
   {
     "name": "DeepDiplomacy",
     "url": "/diplomacy/",
-    "icon": "Handshake",
+    "icon": "/deepdiplomacy_favicon_512.svg",
     "enabled": true
   },
   {
