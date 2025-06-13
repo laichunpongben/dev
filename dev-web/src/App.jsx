@@ -94,6 +94,19 @@ function App() {
   }, [alertOpen])
 
   useEffect(() => {
+    fetch('/warmup.json')
+      .then((res) => (res.ok ? res.json() : []))
+      .then((endpoints) => {
+        if (Array.isArray(endpoints)) {
+          endpoints.forEach((url) => {
+            fetch(url).catch(() => {})
+          })
+        }
+      })
+      .catch(() => {})
+  }, [])
+
+  useEffect(() => {
     fetch('/services.json')
       .then((res) => res.json())
       .then((data) => {
