@@ -114,7 +114,7 @@
     "enabled": false
   },
   {
-    "name": "Diplomacy",
+    "name": "DeepDiplomacy",
     "url": "/diplomacy/",
     "icon": "Handshake",
     "enabled": true
