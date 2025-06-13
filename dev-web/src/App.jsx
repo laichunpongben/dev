@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { Box, IconButton, Typography, Snackbar, Alert } from '@mui/material'
 import ShinyText from './components/ShinyText'
 import PixelTransition from './components/PixelTransition'
@@ -20,6 +21,7 @@ function App() {
   const [collapsed, setCollapsed] = useState(true)
   const [showDecrypted, setShowDecrypted] = useState(false)
   const [showTechStack, setShowTechStack] = useState(false)
+  const location = useLocation()
   const bunnyReverse = bunnyCount % 2 === 0
 
   const whoAmIText =
@@ -94,17 +96,19 @@ function App() {
   }, [alertOpen])
 
   useEffect(() => {
-    fetch('/warmup.json')
-      .then((res) => (res.ok ? res.json() : []))
-      .then((endpoints) => {
-        if (Array.isArray(endpoints)) {
-          endpoints.forEach((url) => {
-            fetch(url).catch(() => {})
-          })
-        }
-      })
-      .catch(() => {})
-  }, [])
+    if (location.pathname === '/') {
+      fetch('/warmup.json')
+        .then((res) => (res.ok ? res.json() : []))
+        .then((endpoints) => {
+          if (Array.isArray(endpoints)) {
+            endpoints.forEach((url) => {
+              fetch(url).catch(() => {})
+            })
+          }
+        })
+        .catch(() => {})
+    }
+  }, [location.pathname])
 
   useEffect(() => {
     fetch('/services.json')
