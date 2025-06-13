@@ -81,14 +81,19 @@ function App() {
           component="img"
           src={item.iconUrl}
           alt={`${item.name} icon`}
-          sx={{ width: { xs: '2rem', sm: '2.5rem' }, height: { xs: '2rem', sm: '2.5rem' } }}
+          sx={{
+            width: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+            height: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+          }}
         />
       )
     }
     return item.Icon ? (
-      <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+      <item.Icon
+        sx={{ fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' } }}
+      />
     ) : (
-      <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+      <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' } }} />
     )
   }
 
@@ -255,7 +260,7 @@ function App() {
                       flexDirection="column"
                       alignItems="center"
                       justifyContent="center"
-                      gap={{ xs: 0.5, sm: 1 }}
+                      gap={{ xs: 0.5, sm: 1, md: 1.25 }}
                       sx={{ width: '100%', height: '100%' }}
                     >
                       {getIconElement(item)}
@@ -290,7 +295,7 @@ function App() {
                       flexDirection="column"
                       alignItems="center"
                       justifyContent="center"
-                      gap={{ xs: 0.5, sm: 1 }}
+                      gap={{ xs: 0.5, sm: 1, md: 1.25 }}
                       sx={{ width: '100%', height: '100%' }}
                     >
                       {getIconElement(item)}
@@ -335,7 +340,7 @@ function App() {
                   flexDirection="column"
                   alignItems="center"
                   justifyContent="center"
-                  gap={{ xs: 0.5, sm: 1 }}
+                  gap={{ xs: 0.5, sm: 1, md: 1.25 }}
                   sx={{ width: '100%', height: '100%' }}
                 >
                   {getIconElement(item)}
