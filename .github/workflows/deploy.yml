@@ -30,6 +30,7 @@ jobs:
       GCP_SERVICE_NAME:    ${{ secrets.GCP_SERVICE_NAME }}
       GCP_RUN_REGION:      ${{ secrets.GCP_RUN_REGION }}
       IMAGE_TAG:           ${{ github.sha }}
+      WARMUP_ENDPOINTS:    ${{ secrets.WARMUP_ENDPOINTS }}
 
     steps:
       - name: Checkout source
@@ -68,6 +69,8 @@ jobs:
           context: ./dev-web
           push: true
           tags: ${{ env.GCP_REGISTRY_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.GCP_REGISTRY_REPO }}/${{ env.GCP_SERVICE_NAME }}:${{ env.IMAGE_TAG }}
+          build-args: |
+            WARMUP_ENDPOINTS=${{ env.WARMUP_ENDPOINTS }}
           cache-from: |
             type=gha
             type=local,src=/tmp/.buildx-cache
