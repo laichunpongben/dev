@@ -26,66 +26,71 @@ export default function SplitText({
     const el = ref.current
     if (!el) return
 
-    const absoluteLines = splitType === 'lines'
-    if (absoluteLines) el.style.position = 'relative'
-
-    const splitter = new GSAPSplitText(el, {
-      type: splitType,
-      absolute: absoluteLines,
-      linesClass: 'split-line',
-      autoSplit: true,
-    })
-
+    let splitter
     let targets
-    switch (splitType) {
+    let tl
+
+    document.fonts.ready.then(() => {
+      const absoluteLines = splitType === 'lines'
+      if (absoluteLines) el.style.position = 'relative'
+
+      splitter = new GSAPSplitText(el, {
+        type: splitType,
+        absolute: absoluteLines,
+        linesClass: 'split-line',
+        autoSplit: true,
+      })
+
+      switch (splitType) {
       case 'lines':
-        targets = splitter.lines
-        break
+          targets = splitter.lines
+          break
       case 'words':
-        targets = splitter.words
-        break
+          targets = splitter.words
+          break
       case 'words, chars':
-        targets = [...splitter.words, ...splitter.chars]
-        break
+          targets = [...splitter.words, ...splitter.chars]
+          break
       default:
-        targets = splitter.chars
-    }
+          targets = splitter.chars
+      }
 
-    targets.forEach((t) => {
-      t.style.willChange = 'transform, opacity'
-    })
+      targets.forEach((t) => {
+        t.style.willChange = 'transform, opacity'
+      })
 
-    const startPct = (1 - threshold) * 100
-    const m = /^(-?\d+)px$/.exec(rootMargin)
-    const raw = m ? parseInt(m[1], 10) : 0
-    const sign = raw < 0 ? `-=${Math.abs(raw)}px` : `+=${raw}px`
-    const start = `top ${startPct}%${sign}`
+      const startPct = (1 - threshold) * 100
+      const m = /^(-?\d+)px$/.exec(rootMargin)
+      const raw = m ? parseInt(m[1], 10) : 0
+      const sign = raw < 0 ? `-=${Math.abs(raw)}px` : `+=${raw}px`
+      const start = `top ${startPct}%${sign}`
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: el,
-        start,
-        toggleActions: 'play none none none',
-        once: true,
-      },
-      smoothChildTiming: true,
-      onComplete: onLetterAnimationComplete,
-    })
+      tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start,
+          toggleActions: 'play none none none',
+          once: true,
+        },
+        smoothChildTiming: true,
+        onComplete: onLetterAnimationComplete,
+      })
 
-    tl.set(targets, { ...from, immediateRender: false, force3D: true })
-    tl.to(targets, {
-      ...to,
-      duration,
-      ease,
-      stagger: delay / 1000,
-      force3D: true,
+      tl.set(targets, { ...from, immediateRender: false, force3D: true })
+      tl.to(targets, {
+        ...to,
+        duration,
+        ease,
+        stagger: delay / 1000,
+        force3D: true,
+      })
     })
 
     return () => {
-      tl.kill()
+      if (tl) tl.kill()
       ScrollTrigger.getAll().forEach((t) => t.kill())
-      gsap.killTweensOf(targets)
-      splitter.revert()
+      if (targets) gsap.killTweensOf(targets)
+      if (splitter) splitter.revert()
     }
   }, [
     text,

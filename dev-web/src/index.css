@@ -64,6 +64,10 @@ footer {
   font-weight: 700;
   margin: 0;
 }
+.portal-title.split-parent,
+.portal-title.split-parent * {
+  font-family: 'Montserrat', sans-serif !important;
+}
 
 .signature {
   font-family: "Agustina", "Agustina Regular", sans-serif;
