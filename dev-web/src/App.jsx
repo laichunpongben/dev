@@ -74,6 +74,24 @@ function App() {
     setShowTechStack(true)
   }
 
+  const getIconElement = (item) => {
+    if (item.iconUrl) {
+      return (
+        <Box
+          component="img"
+          src={item.iconUrl}
+          alt={`${item.name} icon`}
+          sx={{ width: { xs: '2rem', sm: '2.5rem' }, height: { xs: '2rem', sm: '2.5rem' } }}
+        />
+      )
+    }
+    return item.Icon ? (
+      <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+    ) : (
+      <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
+    )
+  }
+
   useEffect(() => {
     const id = requestAnimationFrame(showNextBunny)
     return () => cancelAnimationFrame(id)
@@ -115,8 +133,16 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         const withIcons = data.map((item) => {
-          const Icon = item.icon && Icons[item.icon] ? Icons[item.icon] : PublicIcon
-          return { ...item, Icon, enabled: item.enabled !== false }
+          let Icon = PublicIcon
+          let iconUrl
+          if (item.icon) {
+            if (Icons[item.icon]) {
+              Icon = Icons[item.icon]
+            } else if (item.icon.endsWith('.svg') || item.icon.endsWith('.png')) {
+              iconUrl = item.icon.startsWith('/') ? item.icon : `/${item.icon}`
+            }
+          }
+          return { ...item, Icon, iconUrl, enabled: item.enabled !== false }
         })
         const sorted = withIcons.sort((a, b) => {
           if (a.enabled === b.enabled) return 0
@@ -232,11 +258,7 @@ function App() {
                       gap={{ xs: 0.5, sm: 1 }}
                       sx={{ width: '100%', height: '100%' }}
                     >
-                      {item.Icon ? (
-                        <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                      ) : (
-                        <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                      )}
+                      {getIconElement(item)}
                       <Typography
                         variant="caption"
                         sx={{
@@ -271,11 +293,7 @@ function App() {
                       gap={{ xs: 0.5, sm: 1 }}
                       sx={{ width: '100%', height: '100%' }}
                     >
-                      {item.Icon ? (
-                        <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                      ) : (
-                        <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                      )}
+                      {getIconElement(item)}
                       <Typography
                         variant="caption"
                         sx={{
@@ -320,11 +338,7 @@ function App() {
                   gap={{ xs: 0.5, sm: 1 }}
                   sx={{ width: '100%', height: '100%' }}
                 >
-                  {item.Icon ? (
-                    <item.Icon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                  ) : (
-                    <PublicIcon sx={{ fontSize: { xs: '2rem', sm: '2.5rem' } }} />
-                  )}
+                  {getIconElement(item)}
                   <Typography
                     variant="caption"
                     sx={{
