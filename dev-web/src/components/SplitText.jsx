@@ -33,6 +33,7 @@ export default function SplitText({
       type: splitType,
       absolute: absoluteLines,
       linesClass: 'split-line',
+      autoSplit: true,
     })
 
     let targets
