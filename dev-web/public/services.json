@@ -114,9 +114,9 @@
     "enabled": false
   },
   {
-    "name": "DeepDiplomacy",
+    "name": "LLMDiplomacy",
     "url": "/diplomacy/",
-    "icon": "/deepdiplomacy_negative_favicon_512.svg",
+    "icon": "/llmdiplomacy_negative_favicon_512.svg",
     "enabled": true
   },
   {
