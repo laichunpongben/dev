@@ -7,7 +7,7 @@ on:
 
 jobs:
   sdk:
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-2
     steps:
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v2'
@@ -15,7 +15,7 @@ jobs:
           version: '>= 363.0.0'
 
   build-push-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubicloud-standard-2
     timeout-minutes: 60
     needs: [sdk]
 
