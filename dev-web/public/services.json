@@ -115,7 +115,7 @@
   },
   {
     "name": "LLMDiplomacy",
-    "url": "/diplomacy/",
+    "url": "https://llmdiplomacy.com",
     "icon": "/llmdiplomacy_negative_favicon_1024.svg",
     "enabled": true
   },
