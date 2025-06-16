@@ -1,7 +1,24 @@
 # dev
 
-This repository contains a simple React portal in the `dev-web` directory.
-The list of links shown on the portal is defined in `dev-web/public/services.json`.
+This repository hosts a small portal under `dev-web` built with React and Vite.
+Available links are defined in `dev-web/public/services.json` and displayed as buttons at runtime.
+
+## Overview
+
+The project provides a lightweight launcher for various services. It loads link definitions from `services.json`, checks each URL before opening it, and shows an error message if a link is unavailable.
+
+### Key features
+
+* Animated React interface styled with Material UI
+* Service worker for offline support via the Vite PWA plugin
+* Custom Docker image that pings warm‑up endpoints on a schedule
+* GitHub Actions workflow for building and deploying to Google Cloud Run
+
+### Architecture
+
+1. **Build** – The React app is compiled using Node 22 and Vite.
+2. **Runtime** – Static files are served by an Nginx container.
+3. **Warm‑up** – `schedule-warmup.sh` runs `ping-endpoints.sh` with cron to keep dependent services warm.
 
 To start the development server:
 
