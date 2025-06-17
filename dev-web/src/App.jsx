@@ -31,6 +31,10 @@ function App() {
     'A traveler and photographer when out of office.'
 
   const checkAndOpen = async (url) => {
+    if (/^https?:\/\//.test(url)) {
+      window.open(url, '_blank', 'noopener,noreferrer')
+      return
+    }
     try {
       const res = await fetch(url, { method: 'HEAD' })
       if (res.ok) {
