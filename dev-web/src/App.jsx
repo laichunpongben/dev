@@ -402,7 +402,7 @@ function App() {
                 textAlign: 'left',
               }}
             >
-              {'Tech stack:\nPython\nJavaScript\nLinux'}
+              {'Tech stack:\nPython\nJavaScript/TypeScript\nLinux'}
             </Typography>
           )}
         </Box>
